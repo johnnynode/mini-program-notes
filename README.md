@@ -7,4 +7,4 @@ Mini-Program-Notes
 
 ### License
 
-Mini-Program-Notes is licensed under a MIT License.
+Mini-Program-Notes is licensed under a [MIT License](./LICENSE).
