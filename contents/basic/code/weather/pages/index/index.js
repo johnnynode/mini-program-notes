@@ -22,7 +22,8 @@ const weatherColorMap = {
 Page({
   data: {
     nowTemp: '14°',
-    nowWeather: '阴天'
+    nowWeather: '阴天',
+    nowWeatherBackground: ""
   },
   onLoad: function () {
     wx.request({
@@ -41,7 +42,8 @@ Page({
         // 更新天气数据
         this.setData({
             nowTemp: temp,
-            nowWeather: weatherMap[weather]
+            nowWeather: weatherMap[weather],
+            nowWeatherBackground: '/images/' + weather + '-bg.png'
         })
         // 同步设置导航条
         wx.setNavigationBarColor({
