@@ -32,7 +32,8 @@ Page({
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now', //仅为示例，并非真实的接口地址
       data: {
-        city: '北京市' 
+        city: '北京市',
+        forecast: []
       },
       header: {
           'content-type': 'application/json' // 默认值
@@ -53,6 +54,20 @@ Page({
             frontColor: '#000000',
             backgroundColor: weatherColorMap[weather],
         })
+        // 天气预报
+        let forecast = []
+        let nowHour = new Date().getHours()
+        for (let i = 0; i < 24; i += 3) {
+          forecast.push({
+            time: (i + nowHour) % 24 + "时",
+            iconPath: '/images/sunny-icon.png',
+            temp: "12°"
+          })
+        }
+        forecast[0].time = '现在' // 第一项 强制设置为现在
+        this.setData({
+          forecast:forecast
+        })
       },
       complete: ()=> {
         callback && callback()
@@ -60,8 +75,7 @@ Page({
     })
   },
   onPullDownRefresh: function() {
-    // wx.stopPullDownRefresh()
-    this.getNow(()=>{
+    this.getNowWeather(()=>{
         wx.stopPullDownRefresh()
     })
   }
