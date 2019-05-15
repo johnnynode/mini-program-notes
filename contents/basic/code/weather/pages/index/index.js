@@ -28,7 +28,8 @@ Page({
   onLoad: function () {
     this.getNowWeather();
   },
-  getNowWeather: function(callback) {
+  // 获取现在天气
+  getNowWeather(callback) {
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now', //仅为示例，并非真实的接口地址
       data: {
@@ -41,39 +42,48 @@ Page({
       success: res => {
         // console.log(res.data)
         let result = res.data.result
-        let temp = result.now.temp
-        let weather = result.now.weather
-        // 更新天气数据
-        this.setData({
-            nowTemp: temp,
-            nowWeather: weatherMap[weather],
-            nowWeatherBackground: '/images/' + weather + '-bg.png'
-        })
-        // 同步设置导航条
-        wx.setNavigationBarColor({
-            frontColor: '#000000',
-            backgroundColor: weatherColorMap[weather],
-        })
-        // 天气预报
-        let forecast = []
-        let nowHour = new Date().getHours()
-        for (let i = 0; i < 24; i += 3) {
-          forecast.push({
-            time: (i + nowHour) % 24 + "时",
-            iconPath: '/images/sunny-icon.png',
-            temp: "12°"
-          })
-        }
-        forecast[0].time = '现在' // 第一项 强制设置为现在
-        this.setData({
-          forecast:forecast
-        })
+        this.setNowWeather(result) // 设置当前天气
+        this.setForecastWeather(result) // 设置天气预报
       },
       complete: ()=> {
         callback && callback()
       }
     })
   },
+  // 设置当前天气
+  setNowWeather(result) {
+    let temp = result.now.temp
+    let weather = result.now.weather
+    // 更新天气数据
+    this.setData({
+        nowTemp: temp,
+        nowWeather: weatherMap[weather],
+        nowWeatherBackground: '/images/' + weather + '-bg.png'
+    })
+    // 同步设置导航条
+    wx.setNavigationBarColor({
+        frontColor: '#000000',
+        backgroundColor: weatherColorMap[weather],
+    })
+  },
+  // 设置预报天气
+  setForecastWeather(result) {
+    let forecast = []
+    let _forecast = result.forecast
+    let nowHour = new Date().getHours()
+    for (let i = 0; i < 8; i += 1) {
+      forecast.push({
+        time: (i * 3 + nowHour) % 24 + "时",
+        iconPath: '/images/' + _forecast[i].weather + '-icon.png',
+        temp: _forecast[i].temp + '°'
+      })
+    }
+    _forecast[0].time = '现在' // 第一项 强制设置为现在
+    this.setData({
+      forecast
+    })
+  },
+  // 设置预报天气
   onPullDownRefresh: function() {
     this.getNowWeather(()=>{
         wx.stopPullDownRefresh()
