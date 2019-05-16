@@ -44,6 +44,7 @@ Page({
         let result = res.data.result
         this.setNowWeather(result) // 设置当前天气
         this.setForecastWeather(result) // 设置天气预报
+        this.setTodayPanel(result); // 设置今天面板
       },
       complete: ()=> {
         callback && callback()
@@ -66,6 +67,14 @@ Page({
         backgroundColor: weatherColorMap[weather],
     })
   },
+  // 设置今天的面板
+  setTodayPanel(result) {
+    let date = new Date()
+    this.setData({
+      todayTemp: `${result.today.minTemp}° - ${result.today.maxTemp}°`,
+      todayDate: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 今天`
+    })
+  },
   // 设置预报天气
   setForecastWeather(result) {
     let forecast = []
@@ -82,6 +91,12 @@ Page({
     this.setData({
       forecast
     })
+  },
+  // 今日面板的点击事件
+  onTapDayWeather() {
+    // wx.navigateTo({
+    //   url: '/pages/list/list'
+    // })
   },
   // 设置预报天气
   onPullDownRefresh: function() {
