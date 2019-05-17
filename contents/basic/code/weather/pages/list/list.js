@@ -94,9 +94,9 @@ Page({
   },
   // 今日面板的点击事件
   onTapDayWeather() {
-    wx.navigateTo({
-      url: '/pages/list/list'
-    })
+    // wx.navigateTo({
+    //   url: '/pages/list/list'
+    // })
   },
   // 设置预报天气
   onPullDownRefresh: function() {

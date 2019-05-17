@@ -1,0 +1,4 @@
+<!--list.wxml-->
+<view class="weather-wrapper">
+  list
+</view>

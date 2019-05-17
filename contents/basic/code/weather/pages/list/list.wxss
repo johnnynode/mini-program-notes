@@ -1,0 +1,6 @@
+/**list.wxss**/
+.weather-wrapper{
+  position: relative;
+  padding-top: 174rpx;
+  padding-bottom: 250rpx;
+}
