@@ -1,107 +1,50 @@
-//index.js
-//获取应用实例
+// list.js
 
-const weatherMap = {
-  'sunny': '晴天',
-  'cloudy': '多云',
-  'overcast': '阴',
-  'lightrain': '小雨',
-  'heavyrain': '大雨',
-  'snow': '雪'
-}
-
-const weatherColorMap = {
-  'sunny': '#cbeefd',
-  'cloudy': '#deeef6',
-  'overcast': '#c6ced2',
-  'lightrain': '#bdd5e1',
-  'heavyrain': '#c5ccd0',
-  'snow': '#aae1fc'
- }
+const dayMap = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 
 Page({
-  data: {
-    nowTemp: '14°',
-    nowWeather: '阴天',
-    nowWeatherBackground: ""
+  date: {
+    weekWeather: []
   },
-  onLoad: function () {
-    this.getNowWeather();
+  onLoad() {
+    this.getWeekWeather()
   },
-  // 获取现在天气
-  getNowWeather(callback) {
+  onPullDownRefresh() {
+    this.getWeekWeather(()=>{
+      wx.stopPullDownRefresh()
+    })
+  },
+  getWeekWeather(callback){
     wx.request({
-      url: 'https://test-miniprogram.com/api/weather/now', //仅为示例，并非真实的接口地址
+      url: 'https://test-miniprogram.com/api/weather/future',
       data: {
-        city: '北京市',
-        forecast: []
-      },
-      header: {
-          'content-type': 'application/json' // 默认值
+        time: new Date().getTime(),
+        city: "广州市"
       },
       success: res => {
-        // console.log(res.data)
         let result = res.data.result
-        this.setNowWeather(result) // 设置当前天气
-        this.setForecastWeather(result) // 设置天气预报
-        this.setTodayPanel(result); // 设置今天面板
+        this.setWeekWeather(result)
       },
-      complete: ()=> {
+      complete: ()=>{
         callback && callback()
       }
     })
   },
-  // 设置当前天气
-  setNowWeather(result) {
-    let temp = result.now.temp
-    let weather = result.now.weather
-    // 更新天气数据
-    this.setData({
-        nowTemp: temp,
-        nowWeather: weatherMap[weather],
-        nowWeatherBackground: '/images/' + weather + '-bg.png'
-    })
-    // 同步设置导航条
-    wx.setNavigationBarColor({
-        frontColor: '#000000',
-        backgroundColor: weatherColorMap[weather],
-    })
-  },
-  // 设置今天的面板
-  setTodayPanel(result) {
-    let date = new Date()
-    this.setData({
-      todayTemp: `${result.today.minTemp}° - ${result.today.maxTemp}°`,
-      todayDate: `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()} 今天`
-    })
-  },
-  // 设置预报天气
-  setForecastWeather(result) {
-    let forecast = []
-    let _forecast = result.forecast
-    let nowHour = new Date().getHours()
-    for (let i = 0; i < 8; i += 1) {
-      forecast.push({
-        time: (i * 3 + nowHour) % 24 + "时",
-        iconPath: '/images/' + _forecast[i].weather + '-icon.png',
-        temp: _forecast[i].temp + '°'
+  setWeekWeather(result){
+    let weekWeather = []
+    for (let i=0; i<7; i++){
+      let date = new Date()
+      date.setDate(date.getDate() + i)
+      weekWeather.push({
+        day: dayMap[date.getDay()],
+        date: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`,
+        temp: `${result[i].minTemp}° - ${result[i].maxTemp}°`,
+        iconPath: '/images/' + result[i].weather + '-icon.png'
       })
     }
-    _forecast[0].time = '现在' // 第一项 强制设置为现在
+    weekWeather[0].day = '今天'
     this.setData({
-      forecast
-    })
-  },
-  // 今日面板的点击事件
-  onTapDayWeather() {
-    // wx.navigateTo({
-    //   url: '/pages/list/list'
-    // })
-  },
-  // 设置预报天气
-  onPullDownRefresh: function() {
-    this.getNowWeather(()=>{
-        wx.stopPullDownRefresh()
+      weekWeather:weekWeather
     })
   }
 })
