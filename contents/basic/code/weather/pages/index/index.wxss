@@ -1,7 +1,7 @@
 /**index.wxss**/
 .weather-wrapper{
   position: relative;
-  padding-top: 174rpx;
+  padding-top: 20 rpx;
   padding-bottom: 250rpx;
 }
 
@@ -100,4 +100,33 @@
 .forecast-temp {
   font-size: 40rpx;
   line-height: 56rpx
+}
+
+.location-text {
+  line-height: 42 rpx;
+}
+
+.location-wrapper {
+  margin-bottom: 60rpx;
+  padding-top:20rpx;
+  font-size: 30rpx;
+  line-height: 42rpx;
+  color: rgba(0, 0, 0, 0.5)
+}
+
+.location {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.location-icon {
+  margin-right: 10rpx;
+  width: 21rpx;
+  height: 30rpx;
+}
+
+.location-tips {
+  margin-top:10rpx;
+  text-align: center;
 }
