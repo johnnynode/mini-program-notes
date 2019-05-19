@@ -19,6 +19,12 @@ const weatherColorMap = {
   'snow': '#aae1fc'
 }
 
+const locationAuthList = [
+  {type: 0, text: '点击获取当前位置'},
+  {type: 1, text: '点击开启位置权限'},
+  {type: 2, text: ''}
+]
+
 const QQMapWX = require('../../libs/qqmap-wx-jssdk.js')
 
 Page({
@@ -28,13 +34,32 @@ Page({
     nowWeatherBackground: "",
     forecast: [],
     city: '北京市',
-    locationTipsText: "点击获取当前位置"
+    locationTipsText: "点击获取当前位置",
+    locationTipsText: locationAuthList[0].text,
+    locationAuthType: locationAuthList[0].type
   },
   onLoad: function () {
     this.qqmapsdk = new QQMapWX({
       key: 'EAXBZ-33R3X-AA64F-7FIPQ-BY27J-5UF5B' // key 是 https://lbs.qq.com/qqmap_wx_jssdk/index.html 申请的秘钥
     })
     this.getNowWeather();
+  },
+  onShow() {
+    console.log('onshow!')
+    wx.getSetting({
+      success: res=>{
+        let auth = res.authSetting['scope.userLocation']
+        if (auth && this.data.locationAuthType != locationAuthList[2].type) {
+          // 权限从无到有
+          this.setData({
+            locationAuthType: locationAuthList[2].type,
+            locationTipsText: locationAuthList[2].text
+          })
+          this.getLocation()
+        }
+        //权限从有到无未处理
+      }
+    })
   },
   // 获取现在天气
   getNowWeather(callback) {
@@ -105,11 +130,12 @@ Page({
       url: '/pages/list/list?city=' + this.data.city
     })
   },
-  // 获取地理位置
-  onTapLocation() {
+  // 获取地址封装
+  getLocation() {
     wx.getLocation({
       success: res =>{
           // console.log(res.latitude, res.longitude)
+          // 转换地址
           this.qqmapsdk.reverseGeocoder({
             location: {
               latitude: res.latitude,
@@ -120,13 +146,28 @@ Page({
               let city = res.result.address_component.city
               this.setData({
                 city:city,
-                locationTipsText: ""
+                locationAuthType: locationAuthList[2].type,
+                locationTipsText: locationAuthList[2].text
               })
               this.getNowWeather(); // 获取当前天气
             }
           })
+      },
+      fail: () => {
+        this.setData({
+          locationAuthType: locationAuthList[1].type,
+          locationTipsText: locationAuthList[1].text
+        })
       }
     })
+  },
+  // 获取地理位置
+  onTapLocation() {
+    if (this.data.locationAuthType === locationAuthList[1].type) {
+      wx.openSetting()
+    } else {
+      this.getLocation()
+    }
   },
   // 设置预报天气
   onPullDownRefresh() {
