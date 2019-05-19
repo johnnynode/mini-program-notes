@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="news-wrapper">
+  <scroll-view scroll-x>
+  </scroll-view>
+
+</view>
