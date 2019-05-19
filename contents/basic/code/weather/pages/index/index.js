@@ -42,24 +42,27 @@ Page({
     this.qqmapsdk = new QQMapWX({
       key: 'EAXBZ-33R3X-AA64F-7FIPQ-BY27J-5UF5B' // key 是 https://lbs.qq.com/qqmap_wx_jssdk/index.html 申请的秘钥
     })
-    this.getNowWeather();
-  },
-  onShow() {
-    console.log('onshow!')
+    // 根据设置来处理
     wx.getSetting({
-      success: res=>{
+      success: res => {
         let auth = res.authSetting['scope.userLocation']
-        if (auth && this.data.locationAuthType != locationAuthList[2].type) {
-          // 权限从无到有
-          this.setData({
-            locationAuthType: locationAuthList[2].type,
-            locationTipsText: locationAuthList[2].text
-          })
-          this.getLocation()
-        }
-        //权限从有到无未处理
+        let locationAuthType = auth ? locationAuthList[2].type
+          : (!auth) ? locationAuthList[1].type : locationAuthList[0].type
+        let locationTipsText = auth ? locationAuthList[2].text
+          : (!auth) ? locationAuthList[1].text : locationAuthList[0].text
+        this.setData({
+          locationAuthType,
+          locationTipsText
+        })
+        // 根据auth获取天气
+        auth && this.getCityAndWeather()
+        !auth && this.getNowWeather()
+      },
+      fail: ()=>{
+        this.getNowWeather() //使用默认城市
       }
     })
+    this.getNowWeather();
   },
   // 获取现在天气
   getNowWeather(callback) {
@@ -130,28 +133,29 @@ Page({
       url: '/pages/list/list?city=' + this.data.city
     })
   },
-  // 获取地址封装
-  getLocation() {
+  // 获取地理位置
+  onTapLocation() {
+    this.getCityAndWeather()
+  },
+  // 根据城市获取天气
+  getCityAndWeather() {
     wx.getLocation({
-      success: res =>{
-          // console.log(res.latitude, res.longitude)
-          // 转换地址
-          this.qqmapsdk.reverseGeocoder({
-            location: {
-              latitude: res.latitude,
-              longitude: res.longitude
-            },
-            success: res=>{
-              // console.log(city)
-              let city = res.result.address_component.city
-              this.setData({
-                city:city,
-                locationAuthType: locationAuthList[2].type,
-                locationTipsText: locationAuthList[2].text
-              })
-              this.getNowWeather(); // 获取当前天气
-            }
-          })
+      success: res=>{
+        this.qqmapsdk.reverseGeocoder({
+          location: {
+            latitude: res.latitude,
+            longitude: res.longitude
+          },
+          success: res=>{
+            let city = res.result.address_component.city
+            this.setData({
+              city:city,
+              locationAuthType: locationAuthList[2].type,
+              locationTipsText: locationAuthList[2].text
+            })
+            this.getNowWeather()
+          }
+        })
       },
       fail: () => {
         this.setData({
@@ -160,14 +164,6 @@ Page({
         })
       }
     })
-  },
-  // 获取地理位置
-  onTapLocation() {
-    if (this.data.locationAuthType === locationAuthList[1].type) {
-      wx.openSetting()
-    } else {
-      this.getLocation()
-    }
   },
   // 设置预报天气
   onPullDownRefresh() {
