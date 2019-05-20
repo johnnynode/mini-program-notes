@@ -1,5 +1,6 @@
 //index.js
 //获取应用实例
+import Api from '../../api/index'
 
 const weatherMap = {
   'sunny': '晴天',
@@ -66,24 +67,13 @@ Page({
   },
   // 获取现在天气
   getNowWeather(callback) {
-    wx.request({
-      url: 'https://test-miniprogram.com/api/weather/now', //仅为示例，并非真实的接口地址
-      data: {
-        city: this.data.city
-      },
-      header: {
-          'content-type': 'application/json' // 默认值
-      },
-      success: res => {
-        // console.log(res.data)
-        let result = res.data.result
-        this.setNowWeather(result) // 设置当前天气
-        this.setForecastWeather(result) // 设置天气预报
-        this.setTodayPanel(result); // 设置今天面板
-      },
-      complete: ()=> {
-        callback && callback()
-      }
+    Api.getNowWeather({city: this.data.city}, (res)=>{
+      let result = res.data.result
+      this.setNowWeather(result) // 设置当前天气
+      this.setForecastWeather(result) // 设置天气预报
+      this.setTodayPanel(result); // 设置今天面板
+    }, null, ()=>{
+      callback && callback()
     })
   },
   // 设置当前天气
