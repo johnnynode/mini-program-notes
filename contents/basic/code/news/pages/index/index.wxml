@@ -1,6 +1,43 @@
 <!--index.wxml-->
 <view class="news-wrapper">
+  <!-- 滚动区域 -->
   <scroll-view scroll-x>
+    <view class='bar-wrap'>
+      <view bindtap="onTapBar" data-code="{{item.code}}" wx:for="{{barList}}" class="bar-item">{{item.name}}</view>
+    </view>
   </scroll-view>
-
+  <!-- 列表区域 -->
+  <view class='list-zone'>
+    <!-- banner区域 -->
+    <view class='banner-item'>
+      <view class='box'>
+        <view class='title'>好地方大幅度对方</view>
+        <view class='bottom'>
+          <view class="source">人民日报</view>
+          <view class="time">20:21</view>
+        </view>
+      </view>
+      <!-- 背景图片 -->
+      <image class='bg-banner'
+        mode="scaleToFill"
+        src='{{item.firstImage}}'>
+      </image>
+    </view>
+    <!-- 普通列表 -->
+    <view class='list-item'>
+      <!-- 左文字 -->
+      <view class='left'>
+        <view class='title' >
+        </view>
+        <view class='bottom'>
+          <view class="source">人民日报</view>
+          <view class="time">20:21</view>
+        </view>
+      </view>
+      <!-- 右图片 -->
+      <view class='right'>
+      
+      </view>
+    </view>
+  </view>
 </view>
