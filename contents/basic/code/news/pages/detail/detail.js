@@ -19,8 +19,10 @@ Page({
       if(res.data.code !== 200) {
         return
       }
+      let result = res.data.result
+      result.date = Util.getHourAndMinutes(result.date)
       this.setData({
-        detail: res.data.result
+        detail: result
       })
     }, null, () =>{
       wx.hideLoading()

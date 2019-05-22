@@ -2,8 +2,8 @@
 <view class="news-detail-wrapper">
   <view class="top-title">{{detail.title}}</view>
   <view class="top-num clearfix">
-    <view class='left'>洪都：10:03</view>
-    <view class='right'>阅读：1470</view>
+    <view class='left'>{{detail.source + ' : ' + detail.date}}</view>
+    <view class='right'>阅读 : {{detail.readCount}}</view>
   </view>
   <view class="content">
     <block wx:for="{{detail.content}}">
@@ -11,7 +11,7 @@
       <image class='image item'
         wx:if="{{item.type==='image'}}"
         mode="aspectFill"
-        src='{{item.src}}'>
+        src='{{item.src || "/images/default.jpeg"}}'>
       </image>
       <!-- 段落的渲染 -->
       <view class='p item' wx:if="{{item.type==='p'}}">

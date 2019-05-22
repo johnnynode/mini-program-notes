@@ -24,7 +24,7 @@
           <!-- 背景图片 -->
           <image class='bg-banner'
             mode="aspectFill"
-            src='{{item.firstImage}}'>
+            src='{{item.firstImage || "/images/default.jpeg"}}'>
           </image>
         </view>
         <!-- 普通列表 -->
@@ -42,7 +42,7 @@
           <!-- 右图片 -->
           <image class='right'
             mode="center"
-            src='{{item.firstImage}}'>
+            src='{{item.firstImage || "/images/default.jpeg"}}'>
           </image>
         </view>
     </block>
