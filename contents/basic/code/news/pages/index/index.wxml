@@ -1,43 +1,50 @@
 <!--index.wxml-->
 <view class="news-wrapper">
   <!-- 滚动区域 -->
-  <scroll-view scroll-x>
+  <scroll-view scroll-x class="bar-wrap-scroll">
     <view class='bar-wrap'>
-      <view bindtap="onTapBar" data-code="{{item.code}}" wx:for="{{barList}}" class="bar-item">{{item.name}}</view>
+      <view bindtap="onTapBar" data-code="{{item.code}}" wx:for="{{barList}}" class="bar-item {{ code === item.code ? 'cur' : ''}}">
+      {{item.name}}
+      <view class="b-line"></view>
+      </view>
     </view>
   </scroll-view>
   <!-- 列表区域 -->
   <view class='list-zone'>
-    <!-- banner区域 -->
-    <view class='banner-item'>
-      <view class='box'>
-        <view class='title'>好地方大幅度对方</view>
-        <view class='bottom'>
-          <view class="source">人民日报</view>
-          <view class="time">20:21</view>
+    <block wx:for="{{itemList}}">
+        <!-- banner区域 -->
+        <view class='banner-item' data-id="{{item.id}}" bindtap="jumpTo" wx:if="{{!index}}">
+          <view class='box'>
+            <view class='title line2ovh'>{{item.title}}</view>
+            <view class='bottom'>
+              <view class="source">{{item.source}}</view>
+              <view class="time">{{item.date}}</view>
+            </view>
+          </view>
+          <!-- 背景图片 -->
+          <image class='bg-banner'
+            mode="aspectFill"
+            src='{{item.firstImage}}'>
+          </image>
         </view>
-      </view>
-      <!-- 背景图片 -->
-      <image class='bg-banner'
-        mode="scaleToFill"
-        src='{{item.firstImage}}'>
-      </image>
-    </view>
-    <!-- 普通列表 -->
-    <view class='list-item'>
-      <!-- 左文字 -->
-      <view class='left'>
-        <view class='title' >
+        <!-- 普通列表 -->
+        <view class='list-item bd-b' data-id="{{item.id}}" bindtap="jumpTo" wx:if="{{index}}">
+          <!-- 左文字 -->
+          <view class='left'>
+            <view class='title line2ovh'>
+              {{item.title}}
+            </view>
+            <view class='bottom clearfix'>
+              <view class="source left">{{item.source}}</view>
+              <view class="time left">{{item.date}}</view>
+            </view>
+          </view>
+          <!-- 右图片 -->
+          <image class='right'
+            mode="center"
+            src='{{item.firstImage}}'>
+          </image>
         </view>
-        <view class='bottom'>
-          <view class="source">人民日报</view>
-          <view class="time">20:21</view>
-        </view>
-      </view>
-      <!-- 右图片 -->
-      <view class='right'>
-      
-      </view>
-    </view>
+    </block>
   </view>
 </view>

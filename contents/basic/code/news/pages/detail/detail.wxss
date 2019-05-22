@@ -1,1 +1,33 @@
 /**detail.wxss**/
+.news-detail-wrapper {
+    padding: 0 20rpx;
+}
+.top-title {
+    line-height: 50rpx;
+    padding: 30rpx 0;
+    font-size: 36rpx;
+    color: #333;
+}
+.top-num {
+    font-size: 28rpx;
+    color: #999;
+}
+
+.content {
+    padding: 20px 0 40rpx;
+}
+
+.content .image {
+    width: 100%;
+    height: 300rpx;
+}
+
+.content .p {
+    text-indent: 2em;
+    font-size: 32rpx;
+    color:#666;
+}
+
+.content .item {
+    padding-top: 30rpx;
+}

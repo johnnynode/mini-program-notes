@@ -41,9 +41,10 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "dev list",
-					"pathName": "pages/list/list",
+					"pathName": "pages/detail/detail",
+					"query": "id=1552623252481",
 					"scene": null
 				}
 			]

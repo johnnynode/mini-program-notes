@@ -5,11 +5,11 @@ let appPrefix = constants.appPrefix
 
 export default {
     // 获取当前天气
-    getNowWeather(postData, suc, fail, complete) {
-        return http.post(appPrefix + '/api/weather/now', postData, suc, fail, complete)
+    getNewsList(postData, suc, fail, complete) {
+        return http.post(appPrefix + '/api/news/list', postData, suc, fail, complete)
     },
     // 获取未来天气
-    getWeekWeather(postData, suc, fail, complete) {
-        return http.post(appPrefix + '/api/weather/future', postData, suc, fail, complete)
+    getNewsDetail(postData, suc, fail, complete) {
+        return http.get(appPrefix + '/api/news/detail', postData, suc, fail, complete)
     } 
 }

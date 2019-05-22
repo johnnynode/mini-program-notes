@@ -1,6 +1,22 @@
 <!--index.wxml-->
-<view class="news-wrapper">
-  <scroll-view scroll-x>
-  </scroll-view>
-
+<view class="news-detail-wrapper">
+  <view class="top-title">{{detail.title}}</view>
+  <view class="top-num clearfix">
+    <view class='left'>洪都：10:03</view>
+    <view class='right'>阅读：1470</view>
+  </view>
+  <view class="content">
+    <block wx:for="{{detail.content}}">
+      <!-- 图片的渲染 -->
+      <image class='image item'
+        wx:if="{{item.type==='image'}}"
+        mode="aspectFill"
+        src='{{item.src}}'>
+      </image>
+      <!-- 段落的渲染 -->
+      <view class='p item' wx:if="{{item.type==='p'}}">
+        {{item.text}}
+      </view>
+    </block>
+  </view>
 </view>

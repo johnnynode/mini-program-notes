@@ -14,6 +14,21 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+// 处理时分
+const getHourAndMinutes = timeStamp => {
+  let t = new Date(timeStamp)
+  let h = t.getHours()
+  let m = t.getMinutes()
+  if(h < 10) {
+    h = '0' + h
+  }
+  if(m < 10) {
+    m = '0' + m
+  }
+  return h + ':' + m
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  getHourAndMinutes: getHourAndMinutes
 }
