@@ -1,1 +1,3 @@
+# ignore AppId
 ./contents/projects/code/shop/project.config.json
+./contents/projects/code/shop/server/config.js
