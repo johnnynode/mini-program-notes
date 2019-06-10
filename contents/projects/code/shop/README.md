@@ -1,3 +1,18 @@
+小程序商城demo 客户端项目运行说明
+---
+
+## 项目运行修改
+
+- client/config.js 下的 host 修改成对应自己的host地址
+
+- server/config.js 下 完善 appId、appSecret；添加qcloudAppId、qcloudSecretId、qcloudSecretKey 具体参考 [issue](https://github.com/tencentyun/wafer2-quickstart/issues/13) 以解决小程序无法授权等问题
+
+- 开发者工具版本：wechat_devtools_1.02.1803210 (注：新版开发者工具已不支持腾讯云，项目基于腾讯云，所以用低版本，但低版本很多功能不再兼容了, 具体参考：[开发云替代腾讯云](https://developers.weixin.qq.com/community/develop/doc/000e22b2508a8043e857ece5d5ac00) )
+
+---
+
+以下是模板自带的信息，仅作参考！
+
 # Wafer2 快速开发 Demo
 
 本仓库是最简版的 Wafer2 开发套件，建议配合腾讯云微信小程序开发者工具解决方案一起使用。适用于想要使用 Wafer SDK 开发的开发者，Demo 对 SDK 进行了详细的使用和介绍，降低开发者的学习成本。
@@ -112,4 +127,3 @@
 - [Wafer2 服务端 SDK 使用文档](https://github.com/tencentyun/wafer2-node-sdk/blob/master/README.md)
 - [Wafer2 服务端 SDK API 文档](https://github.com/tencentyun/wafer2-node-sdk/blob/master/API.md)
 - [Wafer2 客户端 SDK 使用文档](https://github.com/tencentyun/wafer2-client-sdk/blob/master/README.md)
-
