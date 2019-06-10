@@ -2,7 +2,7 @@
  * ajax 服务路由集合
  */
 const router = require('koa-router')({
-    prefix: '/weapp'
+  prefix: '/weapp'
 })
 const controllers = require('../controllers')
 
@@ -31,5 +31,23 @@ router.post('/tunnel', controllers.tunnel.post)
 router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
+// 获取商品列表
+router.get('/product', controllers.product.list)
+// 获取商品详情
+router.get('/product/:id', controllers.product.detail)
+// 创建订单
+router.post('/order', validationMiddleware, controllers.order.add)
+// 显示已购买订单
+router.get('/order', validationMiddleware, controllers.order.list)
+// 商品添加到购物车列表
+router.put('/trolley', validationMiddleware, controllers.trolley.add)
+// 获取购物车商品列表
+router.get('/trolley', validationMiddleware, controllers.trolley.list)
+// 更新购物车商品列表
+router.post('/trolley', validationMiddleware, controllers.trolley.update)
+// 添加评论
+router.put('/comment', validationMiddleware, controllers.comment.add)
+// 获取评论列表
+router.get('/comment', controllers.comment.list)
 
 module.exports = router
