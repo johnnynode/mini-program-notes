@@ -1,6 +1,6 @@
 <!--pages/movie/hot/hot.wxml-->
 
-<view class='hot-page'>
+<view class='movie-hot-page'>
   <!-- 单个项目 -->
-  <view class='hot-item'>123</view>
+  <view class='movie-hot-item'>123</view>
 </view>
