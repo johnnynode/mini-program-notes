@@ -1,11 +1,12 @@
-小程序商城demo 客户端项目运行说明
----
+# 小程序商城demo 客户端项目运行说明
 
 ## 项目运行修改
 
 - client/config.js 下的 host 修改成对应自己的host地址
 
-- server/config.js 下 完善 appId、appSecret；添加qcloudAppId、qcloudSecretId、qcloudSecretKey 具体参考 [issue](https://github.com/tencentyun/wafer2-quickstart/issues/13) 以解决小程序无法授权等问题
+- images&sql 下的demo.sql 文件的第16行修改成自己的 IMAGE_BASE_URL 地址
+
+- server/config.js 下 完善 appId、appSecret；添加qcloudAppId、qcloudSecretId、qcloudSecretKey 具体参考此[issue](https://github.com/tencentyun/wafer2-quickstart/issues/13) 以解决小程序无法授权等问题
 
 - 开发者工具版本：wechat_devtools_1.02.1803210 (注：新版开发者工具已不支持腾讯云，项目基于腾讯云，所以用低版本，但低版本很多功能不再兼容了, 具体参考：[开发云替代腾讯云](https://developers.weixin.qq.com/community/develop/doc/000e22b2508a8043e857ece5d5ac00) )
 
