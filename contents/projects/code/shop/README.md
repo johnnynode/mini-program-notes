@@ -4,6 +4,8 @@
 
 因服务器敏感信息，此处仅贡献关键代码和解决方案，项目运行前请做如下修改处理
 
+- project.config.json 文件中的 appid 替换成自己的
+
 - client/config.js 下的 host 修改成对应自己的host地址
 
 - images&sql 下的demo.sql 文件的第16行修改成自己的 IMAGE_BASE_URL 地址
