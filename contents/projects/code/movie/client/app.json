@@ -2,13 +2,13 @@
   "pages": [
     "pages/home/home",
     "pages/my/my",
-    "pages/movie/list/list",
+    "pages/movie/hot/hot",
     "pages/movie/detail/detail",
     "pages/comments/list/list",
     "pages/comments/detail/detail",
     "pages/comments/edit/edit",
     "pages/comments/preview/preview",
-    
+
     "pages/order/order",
     "pages/trolley/trolley",
     "pages/user/user",
