@@ -8,7 +8,7 @@
   display: flex;
 }
 
-.flex {
+.flex, link {
   -webkit-box-flex: 1;
   -moz-box-flex: 1;
   -webkit-flex: 1;

@@ -4,7 +4,6 @@
   position: absolute;
   top:0;
   bottom: 120rpx;
-  background: pink;
 }
 
 .home-bottom {
@@ -15,5 +14,43 @@
   left: 0;
   right: 0;
   text-align: center;
+  font-size: 32rpx;
+}
+
+.slide-image {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 300px;
+  height: 200%;
+}
+
+.home-main swiper-item {
+  overflow: visible;
+}
+
+/* 这样设置不是很好 */
+.home-main swiper {
+  height: 600rpx;
+}
+
+.pic-play-box {
+  padding-top: 40rpx;
+}
+
+.movie-title {
+  line-height: 60rpx;
+  padding-top: 20rpx;
+}
+
+.movie-title,
+.movie-info {
+  text-align: center;
+  font-size: 40rpx;
+  color: #333;
+}
+
+.movie-info view {
+  display: inline-block;
   font-size: 32rpx;
 }
