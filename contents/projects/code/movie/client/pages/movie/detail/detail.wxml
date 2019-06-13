@@ -2,10 +2,28 @@
 
 <view class='movie-detail-page'>
   <!-- 图片信息 -->
-  
-  <!-- 主标题  -->
-
-  <!-- 描述  -->
-
-  <!-- 底部按钮  -->
+  <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <view class='main'>
+    <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
+      <!-- 主标题  -->
+      <view class='title ellipsis'>妇联</view>
+      <!-- 描述  -->
+      <view class='dec'>
+        妇联简介
+      </view>
+    </scroll-view>
+    <!-- 底部按钮 -->
+    <view class='bottom-bar-wrap'>
+      <view class='flex-box bottom-bar h-middle'>
+        <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
+          <view class='icon'></view>
+          <view>查看影评</view>
+        </navigator>
+        <view class='flex' bindtap="openActionsheet">
+          <view class='icon'></view>
+          <view>添加影评</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>
