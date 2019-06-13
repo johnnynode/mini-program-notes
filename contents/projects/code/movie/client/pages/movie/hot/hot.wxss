@@ -1,5 +1,39 @@
 /* pages/movie/hot/hot.wxss */
 
 .movie-hot-page {
-  
+  padding: 30rpx;
+}
+
+.movie-hot-item  {
+    height: 250rpx;
+    overflow: hidden;
+    position: relative;
+    background: #fff;
+    box-shadow: 0 0 1px #ccc;
+    margin-bottom: 30rpx;
+}
+
+.movie-hot-item .pic {
+    width:  180rpx;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.movie-hot-item .text {
+    padding: 50rpx 30rpx 0 210rpx;
+    line-height: 80rpx;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.movie-hot-item .text .title {
+    font-size: 36rpx;
+    color: #333;
+}
+
+.movie-hot-item .text .sub {
+    font-size: 28rpx;
+    color: #888;
 }
