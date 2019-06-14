@@ -5,7 +5,13 @@
   top: 0;
   left: 0;
   bottom: 120rpx;
-  background: pink;
+  padding-top: 30rpx;
+}
+
+.comments-item {
+  height: 180rpx; 
+  background: #fff;
+  padding: 20rpx 40rpx;
 }
 
 .comments-bottom-bar {
@@ -16,4 +22,44 @@
   height: 120rpx;
   line-height: 120rpx;
   text-align: center;
+}
+
+.comments-item .top {
+  height: 60rpx;
+  padding-top: 12rpx;
+}
+
+.comments-item .pic,
+.comments-item .name {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.comments-item .pic {
+  width: 80rpx;
+  height: 80rpx;
+  background: pink;
+  border-radius: 50%;
+}
+
+.comments-item .name {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 50rpx;
+  margin: 15rpx 0 0 15rpx;
+}
+
+.comments-item .bottom {
+  line-height: 130rpx;
+  font-size: 28rpx;
+  color: #666;
+  padding: 10rpx 0;
+}
+
+.comments-item:last-child::after {
+  display: none;
+}
+
+.comments-bottom-bar {
+  background: #fff;
 }

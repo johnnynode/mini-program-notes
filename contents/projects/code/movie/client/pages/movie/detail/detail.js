@@ -24,9 +24,6 @@ Page({
       itemList: ['文字','音频'],
       itemColor: '#007aff',
       success(res) {
-        console.log(res.tapIndex);
-        console.log('.....');
-
         // 跳转到编辑影评页面
         wx.navigateTo({
           url: '../../comments/list/list?type=' + res.tapIndex
