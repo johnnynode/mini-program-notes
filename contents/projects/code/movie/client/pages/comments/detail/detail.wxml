@@ -1,5 +1,41 @@
 <!--pages/comments/detail/detail.wxml-->
 
-<view class='comments-detail-page'>
-  
+<view class='comments-detail-page move-common'>
+  <!-- 图片信息 -->
+  <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <view class='main'>
+    <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
+      <!-- 主标题  -->
+      <view class='title ellipsis'>妇联</view>
+      <!-- 影评盒子 -->
+      <view class='comments-box'>
+        
+        <view class="box-top"></view>
+        <view class="box-main">
+           <!-- 语音和文字的区别 -->
+           <block>
+            <view class="text-zone">
+                
+            </view>
+            <view class="voice-zone">
+            
+            </view>
+           </block>    
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 底部按钮 -->
+    <view class='bottom-bar-wrap'>
+      <view class='flex-box bottom-bar h-middle'>
+        <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
+          <view class='icon'></view>
+          <view>查看影评</view>
+        </navigator>
+        <view class='flex' bindtap="openActionsheet">
+          <view class='icon'></view>
+          <view>添加影评</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

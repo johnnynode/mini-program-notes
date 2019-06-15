@@ -1,6 +1,6 @@
 <!--pages/movie/detail/detail.wxml-->
 
-<view class='movie-detail-page'>
+<view class='movie-detail-page move-common'>
   <!-- 图片信息 -->
   <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
   <view class='main'>
