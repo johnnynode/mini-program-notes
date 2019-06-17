@@ -11,5 +11,10 @@ link {
 }
 
 .link-icon {
-    margin-right: 10rpx;
+    display: inline-block;
+    vertical-align: top;
+    margin: 31rpx 10rpx 0 0;
+    width: 50rpx;
+    height: 50rpx;
+    background-size: cover;
 }

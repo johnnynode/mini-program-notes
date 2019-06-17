@@ -1,56 +1,71 @@
 /* pages/home/home.wxss */
 
 .home-main {
-  position: absolute;
-  top:0;
-  bottom: 120rpx;
+    position: absolute;
+    top: 0;
+    bottom: 120rpx;
 }
 
 .home-bottom {
-  position: absolute;
-  bottom: 0;
-  height: 120rpx;
-  line-height: 120rpx;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 32rpx;
+    position: absolute;
+    bottom: 0;
+    height: 120rpx;
+    line-height: 120rpx;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 32rpx;
 }
 
 .slide-image {
-  display: block;
-  margin: 0 auto;
-  width: 80%;
-  max-width: 300px;
-  height: 200%;
+    display: block;
+    margin: 0 auto;
+    width: 75%!important;
+    max-width: 300px;
+    height: 200%;
 }
 
 .home-main swiper-item {
-  overflow: visible;
+    overflow: visible;
 }
 
+
 /* 这样设置不是很好 */
+
 .home-main swiper {
-  height: 600rpx;
+    height: 800rpx;
 }
 
 .pic-play-box {
-  padding-top: 40rpx;
+    padding-top: 40rpx;
 }
 
 .movie-title {
-  line-height: 80rpx;
-  padding-top: 20rpx;
+    line-height: 80rpx;
+    padding-top: 20rpx;
 }
 
 .movie-title,
 .movie-info {
-  text-align: center;
-  font-size: 40rpx;
-  color: #333;
+    text-align: center;
+    font-size: 40rpx;
+    color: #333;
 }
 
 .movie-info view {
-  display: inline-block;
-  font-size: 32rpx;
+    display: inline-block;
+    font-size: 32rpx;
+}
+
+.movie-info .recommend {
+    line-height: 130rpx;
+}
+
+.p-icon {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 50%;
+    background: pink;
+    vertical-align: top;
+    margin: 10px 10px 0 0;
 }

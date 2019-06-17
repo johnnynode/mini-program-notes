@@ -10,7 +10,7 @@
             <image src="{{item}}" class="slide-image" mode="widthFix" style="width:730rpx" />
             <view class="movie-title">title</view>
             <view class="movie-info">
-              <view class='p-icon'>头像</view>
+              <view class='p-icon'></view>
               <view class="recommend">{{123}} 给你推荐了一部电影</view>
             </view>
           </swiper-item>
@@ -24,8 +24,8 @@
   </scroll-view>
 
   <view class='home-bottom flex-box'>
-    <link inner-text="热门" icon="" to="../movie/hot/hot" class-name="'flex'"></link>
-    <link inner-text="我的" icon="" to="../my/my" class-name="'flex'"></link>
+    <link inner-text="热门" icon="/images/recomend.png" to="../movie/hot/hot" class-name="'flex'"></link>
+    <link inner-text="我的" icon="/images/my.png" to="../my/my" class-name="'flex'"></link>
   </view>
 </view>
 
