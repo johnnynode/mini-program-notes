@@ -1,35 +1,90 @@
 /* pages/my/my.wxss */
 
 .my-page {
-  position: absolute;
-  top:0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .my-page .toggle-btn {
-  height: 80rpx;
-  line-height: 80rpx;
-  margin: 60rpx 0;
-  text-align: center;
-  font-size: 28rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    margin: 60rpx 0;
+    text-align: center;
+    font-size: 30rpx;
+    color: #ffa67f;
+}
+
+.my-page .toggle-btn .icon {
+    width: 30rpx;
+    height: 30rpx;
+    background: no-repeat center;
+    background-size: cover;
+    display: inline-block;
+    vertical-align: top;
+    margin: 24rpx 0 0 0;
 }
 
 .my-main {
-  position: absolute;
-  top: 200rpx;
-  bottom: 120rpx;
-  background: pink;
+    position: absolute;
+    top: 180rpx;
+    bottom: 120rpx;
+    padding: 30rpx;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .my-page .back-home-btn {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 120rpx;
-  line-height: 120rpx;
-  bottom: 0;
-  text-align: center;
-  font-size: 32rpx;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 120rpx;
+    line-height: 120rpx;
+    bottom: 0;
+    text-align: center;
+    font-size: 32rpx;
+}
+
+.collected-movie .right-side {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 10rpx 20rpx 215rpx;
+    color: #333;
+    font-size: 30rpx;
+}
+
+.collected-movie .right-side .title {
+    font-size: 40rpx;
+    color: #333;
+    font-weight: 500;
+    line-height: 70rpx;
+}
+
+.collected-movie .right-side .voice {
+    width: 300rpx;
+    height: 60rpx;
+    background: pink;
+    margin: 5rpx 0;
+}
+
+.collected-movie .right-side .head-pic {
+    width: 60rpx;
+    height: 60rpx;
+    background: green;
+    border-radius: 50%;
+    margin-right: 10rpx;
+}
+
+.collected-movie .right-side .box {
+    padding-top: 10rpx;
+    line-height: 59rpx;
+}
+
+
+/* 两行 todo */
+
+.collected-movie .right-side .text {
+    line-height: 50rpx;
 }

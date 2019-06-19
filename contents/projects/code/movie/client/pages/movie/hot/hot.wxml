@@ -2,16 +2,16 @@
 
 <view class='movie-hot-page'>
   <!-- 单个项目 -->
-  <navigator class='movie-hot-item flex-box' url="/pages/movie/detail/detail?id={{1}}">
-    <image class='pic left' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <navigator class='movie-hot-item move-item-card clearfix' url="/pages/movie/detail/detail?id={{1}}">
+    <image class='pic' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
     <view class="left text">
       <view class='title ellipsis'>付</view>
       <view class='sub ellipsis'>类型: 动作</view>
     </view>
   </navigator>
 
-  <navigator class='movie-hot-item flex-box' url="/pages/movie/detail/detail?id={{1}}">
-    <image class='pic left' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <navigator class='movie-hot-item move-item-card clearfix' url="/pages/movie/detail/detail?id={{1}}">
+    <image class='pic' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
     <view class="left text">
       <view class='title ellipsis'>付</view>
       <view class='sub ellipsis'>类型: 动作</view>
