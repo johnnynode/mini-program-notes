@@ -320,7 +320,8 @@ page {
 }
 
 .move-common .bottom-bar .flex {
-    background: pink;
+    box-shadow: 0 0 2px #eee;
+    border-radius: 5rpx;
     font-size: 28rpx;
 }
 

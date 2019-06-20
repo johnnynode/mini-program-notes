@@ -1,6 +1,15 @@
 /* pages/detail/detail.wxss */
 
 .movie-detail-page .main-inner .dec {
-  margin: 0 60rpx;
-  color: #666;
+    margin: 0 60rpx;
+    color: #666;
+}
+
+.movie-detail-page .bottom-bar-wrap .icon {
+    background: no-repeat center;
+    background-size: contain;
+    width: 50rpx;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 10rpx;
 }

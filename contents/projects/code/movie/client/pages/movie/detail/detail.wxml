@@ -16,11 +16,11 @@
     <view class='bottom-bar-wrap'>
       <view class='flex-box bottom-bar h-middle'>
         <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
-          <view class='icon'></view>
+          <view class='icon' style="background-image:{{'url(/images/see.png)'}}"></view>
           <view>查看影评</view>
         </navigator>
         <view class='flex' bindtap="openActionsheet">
-          <view class='icon'></view>
+          <view class='icon' style="background-image:{{'url(/images/chat.png)'}}"></view>
           <view>添加影评</view>
         </view>
       </view>
