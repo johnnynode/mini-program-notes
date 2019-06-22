@@ -96,3 +96,11 @@
   height: 180rpx;
   border-radius: 10rpx;
 }
+
+.comments-detail-page .bottom-bar-wrap .icon {
+  background-position: bottom;
+}
+
+.comments-detail-page .bottom-bar-wrap .icon.cur {
+  background-position: top;
+}

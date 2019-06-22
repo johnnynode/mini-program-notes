@@ -9,7 +9,6 @@
       <view class='title ellipsis'>妇联</view>
       <!-- 影评盒子 -->
       <view class='comments-box'>
-        
         <view class="box-top"></view>
         <view class="box-main">
            <!-- 语音和文字的区别 -->
@@ -28,11 +27,11 @@
     <view class='bottom-bar-wrap'>
       <view class='flex-box bottom-bar h-middle'>
         <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
-          <view class='icon'></view>
-          <view>查看影评</view>
+          <view class='icon {{"cur"}}' style="background-image:{{'url(/images/star.png)'}}"></view>
+          <view>收藏影评</view>
         </navigator>
         <view class='flex' bindtap="openActionsheet">
-          <view class='icon'></view>
+          <view class='icon' style="background-image:{{'url(/images/pen.png)'}}"></view>
           <view>添加影评</view>
         </view>
       </view>
