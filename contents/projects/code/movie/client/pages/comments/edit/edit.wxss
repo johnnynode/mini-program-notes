@@ -96,3 +96,20 @@
   height: 180rpx;
   border-radius: 10rpx;
 }
+
+.bottom-finish-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: rgb(0, 189, 0);
+  color: #fff;
+  font-size: 32rpx;
+}
+
+.comments-edit-page.movie-common {
+  padding-bottom: 140rpx;
+}

@@ -12,6 +12,21 @@ Page({
     commentList: [], // 评论列表
   },
 
+  // 弹出 openActionsheet
+  openActionsheet: function(e) {
+    wx.showActionSheet({
+      itemList: ['文字','音频'],
+      itemColor: '#007aff',
+      success(res) {
+        // 跳转到编辑影评页面
+        wx.navigateTo({
+          url: '../../comments/edit/edit?type=' + res.tapIndex
+        });
+      }
+    })
+    console.log(e.currentTarget.dataset['index']);
+  },
+
   previewImg(event) {
     let target = event.currentTarget
     let src = target.dataset.src

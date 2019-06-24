@@ -348,6 +348,7 @@ page {
     line-height: 60rpx;
     color: #333;
     padding: 0 80rpx;
+    font-weight: 600;
 }
 
 .movie-item-card {
