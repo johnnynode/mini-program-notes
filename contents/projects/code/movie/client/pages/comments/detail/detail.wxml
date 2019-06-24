@@ -32,7 +32,7 @@
         </navigator>
         <view class='flex' bindtap="openActionsheet">
           <view class='icon' style="background-image:{{'url(/images/pen.png)'}}"></view>
-          <view>添加影评</view>
+          <view>写影评</view>
         </view>
       </view>
     </view>

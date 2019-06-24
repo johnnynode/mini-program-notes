@@ -62,4 +62,5 @@
 
 .comments-bottom-bar {
   background: #fff;
+  border-top: 1px solid #eee;
 }

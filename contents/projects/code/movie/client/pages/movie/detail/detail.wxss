@@ -11,5 +11,6 @@
     width: 50rpx;
     vertical-align: top;
     display: inline-block;
-    margin-top: 10rpx;
+    margin-top: 14rpx;
+    margin-right: 10rpx;
 }
