@@ -12,10 +12,13 @@
            <!-- 语音和文字的区别 -->
            <block>
             <view class="text-zone">
-            
+                <textarea placeholder="请输入您的影评内容..." auto-focus />
             </view>
             <view class="voice-zone">
-            
+                <view class="voice-btn">
+                    <view style="background-image: url(/images/voice.png)" class="voice-icon"></view>
+                    <view class="voice-text">录音</view>
+                </view>
             </view>
            </block>    
         </view>
