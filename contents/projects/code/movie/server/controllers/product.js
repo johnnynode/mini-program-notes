@@ -7,7 +7,13 @@ module.exports = {
    */
 
   list: async ctx => {
-    ctx.state.data = await DB.query("SELECT * FROM product;")
+    console.log('list x')
+    try {
+      ctx.state.data = await DB.query("SELECT * FROM product;")
+    } catch (error) {
+      console.log(error)
+    }
+    
   },
 
   detail: async ctx => {

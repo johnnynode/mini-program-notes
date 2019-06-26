@@ -31,9 +31,12 @@ Page({
     wx.showLoading({
       title: '商品数据加载中',
     })
+    console.log('req ...')
     qcloud.request({
       url: config.service.productList,
       success: result => {
+        console.log('suc res ...')
+        console.log(result)
         wx.hideLoading()
 
         if (!result.data.code) {
