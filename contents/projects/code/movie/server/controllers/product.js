@@ -6,14 +6,13 @@ module.exports = {
    * 
    */
 
-  list: async ctx => {
-    console.log('list x')
+  async list(ctx) {
+    console.log('test list .. server')
     try {
       ctx.state.data = await DB.query("SELECT * FROM product;")
     } catch (error) {
       console.log(error)
     }
-    
   },
 
   detail: async ctx => {
