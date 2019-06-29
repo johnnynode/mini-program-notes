@@ -35,10 +35,7 @@ Page({
     qcloud.request({
       url: config.service.productList,
       success: result => {
-        console.log('suc res ...')
-        console.log(result)
         wx.hideLoading()
-
         if (!result.data.code) {
           this.setData({
             productList: result.data.data
@@ -141,11 +138,4 @@ Page({
   onReachBottom: function () {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })
