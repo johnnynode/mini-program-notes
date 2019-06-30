@@ -10,6 +10,8 @@
 
 - images&sql 下的demo.sql 文件的第16行修改成自己的 IMAGE_BASE_URL 地址
 
+- images&sql 下的data.sql 文件的第11行修改成自己的 @IMAGE_BASE_URL 地址
+
 - server/config.js 下 完善 appId、appSecret；添加qcloudAppId、qcloudSecretId、qcloudSecretKey 具体参考此[issue](https://github.com/tencentyun/wafer2-quickstart/issues/13) 以解决小程序无法授权等问题
 
 - 开发者工具版本：wechat_devtools_1.02.1803210
