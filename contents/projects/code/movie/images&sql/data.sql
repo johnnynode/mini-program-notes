@@ -7,6 +7,10 @@ SET @IMAGE_BASE_URL = "https://your-id.cos.ap-beijing.myqcloud.com/";
 -- --------------------------------------------------------
 
 --
+-- 表的结构
+--
+
+--
 -- 表的结构 `movies` 电影列表
 --
 
@@ -55,6 +59,16 @@ CREATE TABLE `comment` (
   `content` varchar(511) CHARACTER SET utf8 DEFAULT NULL,
   `images` varchar(1023) DEFAULT NULL,
   `product_id` int(11) NOT NULL,
+  `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 表的结构 `collection_user`
+--
+
+CREATE TABLE `collection_user` (
+  `id` int(11) NOT NULL,
+  `user` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
