@@ -73,3 +73,15 @@ CREATE TABLE `collection_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
+
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `movies`
+--
+
+ALTER TABLE `movies`
+  ADD PRIMARY KEY (`id`);
