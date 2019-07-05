@@ -92,3 +92,13 @@ ALTER TABLE `movies`
 
 ALTER TABLE `collection_user`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `movie` (`movie_id`);
+
+-- --------------------------------------------------------
