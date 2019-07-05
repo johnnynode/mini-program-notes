@@ -85,3 +85,10 @@ CREATE TABLE `collection_user` (
 
 ALTER TABLE `movies`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `collection_user`
+--
+
+ALTER TABLE `collection_user`
+  ADD PRIMARY KEY (`id`);
