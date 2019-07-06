@@ -1,0 +1,20 @@
+/* 这里的样式只应用于这个自定义组件 */
+
+link {
+    background: #fff;
+    color: #666;
+}
+
+.link-icon,
+.link-text {
+    display: inline-block;
+}
+
+.link-icon {
+    display: inline-block;
+    vertical-align: top;
+    margin: 31rpx 10rpx 0 0;
+    width: 50rpx;
+    height: 50rpx;
+    background-size: cover;
+}

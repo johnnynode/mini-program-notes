@@ -19,7 +19,10 @@
             <view class="voice-zone">
             
             </view>
-           </block>    
+           </block>  
+           <!-- 测试代码   -->
+          <servant treedata="{{treedata}}" depth="0"></servant>
+
         </view>
       </view>
     </scroll-view>

@@ -1,0 +1,7 @@
+<!-- 这是自定义组件的内部WXML结构 -->
+<view style='margin-left:{{depth*20}}px' wx:if="{{treedata.length>0}}" wx:for="{{treedata}}">
+  <view data-id="{{item.id}}">{{item.name}}</view>
+  <view wx:if="{{item.childs!=undefined&&item.childs!=null&&item.childs.length>0}}">
+    <servant treedata="{{item.childs}}" depth="{{depth+1}}"></servant>
+  </view>
+</view>
