@@ -111,3 +111,9 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `movies`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=4;
+
+--
+-- 使用表AUTO_INCREMENT `collection_user`
+--
+ALTER TABLE `collection_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
