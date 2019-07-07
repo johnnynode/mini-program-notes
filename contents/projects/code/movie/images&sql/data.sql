@@ -102,3 +102,12 @@ ALTER TABLE `comment`
   ADD KEY `movie` (`movie_id`);
 
 -- --------------------------------------------------------
+
+--
+-- 在导出的表使用AUTO_INCREMENT
+--
+
+-- 使用表AUTO_INCREMENT `movies`
+--
+ALTER TABLE `movies`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=4;
