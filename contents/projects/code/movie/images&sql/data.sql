@@ -125,3 +125,13 @@ ALTER TABLE `comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 -- --------------------------------------------------------
+
+--
+-- 限制导出的表
+--
+
+--
+-- 限制表 `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_link` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
