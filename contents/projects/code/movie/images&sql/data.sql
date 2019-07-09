@@ -135,3 +135,10 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_link` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
+
+--
+-- 限制表 `collection_user`
+--
+ALTER TABLE `collection_user`
+  ADD CONSTRAINT `collection_link` FOREIGN KEY (`collection_id`) REFERENCES `collection_user` (`id`),
+  ADD CONSTRAINT `movie_link` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
