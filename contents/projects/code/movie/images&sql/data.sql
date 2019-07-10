@@ -11,10 +11,10 @@ SET @IMAGE_BASE_URL = "https://your-id.cos.ap-beijing.myqcloud.com/";
 --
 
 --
--- 表的结构 `movies` 电影列表
+-- 表的结构 `movies_list` 电影列表
 --
 
-CREATE TABLE `movies` (
+CREATE TABLE `movies_list` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
@@ -25,10 +25,10 @@ CREATE TABLE `movies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8; 
 
 --
--- 转存表中的数据 `movies`
+-- 转存表中的数据 `movies_list`
 --
 
-INSERT INTO `movies` (`id`, `image`, `title`, `category`, `description`) VALUES
+INSERT INTO `movies_list` (`id`, `image`, `title`, `category`, `description`) VALUES
 (1, CONCAT(@IMAGE_BASE_URL, 'p2517753454.jpg'), '复仇者联盟3：无限战争', '动作 / 科幻 / 奇幻 / 冒险', '《复仇者联盟3：无限战争》是漫威电影宇宙10周年的历史性集结，将为影迷们带来史诗版的终极对决。面对灭霸突然发起的闪电袭击，复仇者联盟及其所有超级英雄盟友必须全力以赴，才能阻止他对全宇宙造成毁灭性的打击。'),
 (2, CONCAT(@IMAGE_BASE_URL, 'p2504277551.jpg'), '至暗时刻 Darkest Hour', '剧情 / 传记 / 历史', '影片讲述英国首相丘吉尔在作为首相期间面临的最重要的审判：是向纳粹妥协做俘虏，还是团结人民群起反抗？丘吉尔将集结整个国家为自由奋战，试图改变世界历史进程，度过黎明前的黑暗。'),
 (3, CONCAT(@IMAGE_BASE_URL, 'p863416171.jpg'), '挡不住的奇迹', '剧情 / 喜剧 / 音乐', '盖伊（汤姆·埃弗里特·斯科特 饰）平常就喜欢打鼓，正好当时著名乐队“奇迹”中急需一名鼓手参加表演，于是他鼓起勇气前往应征。盖伊的表现得到了认同，加入了乐队后便密锣紧鼓的加紧训练。演出时，乐队演奏了著名的原创歌曲，可是盖伊却打错了节奏。阴差阳错的时，除了主唱吉米（强纳·森萨奇 饰）之外，其余的人也都喜欢了这个被奏错的版本。这件事成为了吉米与盖伊之间不和的导火线。这首歌很快在经纪人（汤姆·汉克斯 饰）的力捧下成为了冠军歌，但盖伊与吉米之间的矛盾也因为歌迷菲伊的原因越来越深。 到最后他们之间的矛盾能否化解，乐队又能否继续走红呢？'),
@@ -48,10 +48,10 @@ INSERT INTO `movies` (`id`, `image`, `title`, `category`, `description`) VALUES
 -- --------------------------------------------------------
 
 --
--- 表的结构 `comment` 电影列表
+-- 表的结构 `movies_comment` 电影列表
 --
 
-CREATE TABLE `comment` (
+CREATE TABLE `movies_comment` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `username` varchar(255) DEFAULT NULL,
@@ -63,10 +63,10 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 表的结构 `collection_user`
+-- 表的结构 `movies_collection_user`
 --
 
-CREATE TABLE `collection_user` (
+CREATE TABLE `movies_collection_user` (
   `id` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -80,24 +80,24 @@ CREATE TABLE `collection_user` (
 --
 
 --
--- Indexes for table `movies`
+-- Indexes for table `movies_list`
 --
 
-ALTER TABLE `movies`
+ALTER TABLE `movies_list`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `collection_user`
+-- Indexes for table `movies_collection_user`
 --
 
-ALTER TABLE `collection_user`
+ALTER TABLE `movies_collection_user`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comment`
+-- Indexes for table `movies_comment`
 --
 
-ALTER TABLE `comment`
+ALTER TABLE `movies_comment`
   ADD PRIMARY KEY (`id`),
   ADD KEY `movie` (`movie_id`);
 
@@ -107,21 +107,21 @@ ALTER TABLE `comment`
 -- 在导出的表使用AUTO_INCREMENT
 --
 
--- 使用表AUTO_INCREMENT `movies`
+-- 使用表AUTO_INCREMENT `movies_list`
 --
-ALTER TABLE `movies`
+ALTER TABLE `movies_list`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id', AUTO_INCREMENT=4;
 
 --
--- 使用表AUTO_INCREMENT `collection_user`
+-- 使用表AUTO_INCREMENT `movies_collection_user`
 --
-ALTER TABLE `collection_user`
+ALTER TABLE `movies_collection_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- 使用表AUTO_INCREMENT `comment`
+-- 使用表AUTO_INCREMENT `movies_comment`
 --
-ALTER TABLE `comment`
+ALTER TABLE `movies_comment`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 -- --------------------------------------------------------
@@ -131,14 +131,14 @@ ALTER TABLE `comment`
 --
 
 --
--- 限制表 `comment`
+-- 限制表 `movies_comment`
 --
-ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_link` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
+ALTER TABLE `movies_comment`
+  ADD CONSTRAINT `movies_comment_link` FOREIGN KEY (`movie_id`) REFERENCES `movies_list` (`id`);
 
 --
--- 限制表 `collection_user`
+-- 限制表 `movies_collection_user`
 --
-ALTER TABLE `collection_user`
-  ADD CONSTRAINT `collection_link` FOREIGN KEY (`collection_id`) REFERENCES `collection_user` (`id`),
-  ADD CONSTRAINT `movie_link` FOREIGN KEY (`movie_id`) REFERENCES `movies` (`id`);
+ALTER TABLE `movies_collection_user`
+  ADD CONSTRAINT `movies_collection_link` FOREIGN KEY (`movies_collection_id`) REFERENCES `movies_collection_user` (`id`),
+  ADD CONSTRAINT `movie_link` FOREIGN KEY (`movie_id`) REFERENCES `movies_list` (`id`);
