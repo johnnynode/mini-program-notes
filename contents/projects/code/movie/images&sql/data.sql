@@ -48,7 +48,7 @@ INSERT INTO `movies_list` (`id`, `image`, `title`, `category`, `description`) VA
 -- --------------------------------------------------------
 
 --
--- 表的结构 `movies_comment` 电影列表
+-- 表的结构 `movies_comment` 电影列表 字段中 type 0 文本, 1 音频
 --
 
 CREATE TABLE `movies_comment` (
@@ -57,8 +57,8 @@ CREATE TABLE `movies_comment` (
   `username` varchar(255) DEFAULT NULL,
   `avatar` varchar(255) NOT NULL,
   `content` varchar(511) CHARACTER SET utf8 DEFAULT NULL,
-  `images` varchar(1023) DEFAULT NULL,
-  `product_id` int(11) NOT NULL,
+  `type` tinyint(2) NOT NULL DEFAULT 0,
+  `movie_id` int(11) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
