@@ -2,7 +2,7 @@
 -- 定义 SQL 需要用到的变量
 --
 
-SET @IMAGE_BASE_URL = "https://movie-1259316955.cos.ap-beijing.myqcloud.com/";
+SET @IMAGE_BASE_URL = "https://your-id.cos.ap-beijing.myqcloud.com/";
 
 -- --------------------------------------------------------
 
@@ -80,13 +80,6 @@ CREATE TABLE `movies_collection_user` (
 --
 
 --
--- Indexes for table `movies_list`
---
-
-ALTER TABLE `movies_list`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `movies_collection_user`
 --
 
@@ -134,11 +127,11 @@ ALTER TABLE `movies_comment`
 -- 限制表 `movies_comment`
 --
 ALTER TABLE `movies_comment`
-  ADD CONSTRAINT `movies_comment_link` FOREIGN KEY (`movie_id`) REFERENCES `movies_list` (`id`);
+  ADD CONSTRAINT `movie_link` FOREIGN KEY (`movie_id`) REFERENCES `movies_list` (`id`);
 
 --
 -- 限制表 `movies_collection_user`
 --
 ALTER TABLE `movies_collection_user`
-  ADD CONSTRAINT `movies_collection_link` FOREIGN KEY (`movies_collection_id`) REFERENCES `movies_collection_user` (`id`),
-  ADD CONSTRAINT `movie_link` FOREIGN KEY (`movie_id`) REFERENCES `movies_list` (`id`);
+  ADD CONSTRAINT `m_c_link` FOREIGN KEY (`id`) REFERENCES `movies_list` (`id`);
+COMMIT;
