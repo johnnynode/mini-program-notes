@@ -7,12 +7,15 @@
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block wx:for="{{homeList}}">
           <swiper-item>
-            <image src="{{item.image}}" class="slide-image" mode="widthFix" style="width:730rpx" />
-            <view class="movie-title">{{item.title}}</view>
-            <view class="movie-info" wx:if="{{false}}">
-              <view class='p-icon'></view>
-              <view class="recommend">{{123}} 给你推荐了一部电影</view>
-            </view>
+            <navigator url="../movie/detail/detail?id={{item.id}}" open-type="redirect" hover-class="other-navigator-hover">
+              <image src="{{item.image}}" class="slide-image" mode="widthFix" style="width:730rpx" />
+              <view class="movie-title">{{item.title}}</view>
+              <view class="movie-info" wx:if="{{false}}">
+                <view class='p-icon'></view>
+                <view class="recommend">{{123}} 给你推荐了一部电影</view>
+              </view>
+            </navigator>
+
           </swiper-item>
         </block>
       </swiper>
