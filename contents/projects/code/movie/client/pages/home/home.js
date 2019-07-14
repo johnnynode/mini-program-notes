@@ -24,33 +24,32 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getProductList()
+    this.getHomeList()
   },
 
-  getProductList() {
+  /* 首页 获取所有电影中的三条电影 暂时不联查推荐的表 */
+  getHomeList() {
     wx.showLoading({
-      title: '商品数据加载中',
+      title: '加载中',
     })
-    console.log('req ...', config.service.productList)
     qcloud.request({
-      url: config.service.productList,
+      url: config.service.homeList,
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
           this.setData({
-            productList: result.data.data
+            homeList: result.data.data
           })
         } else {
-          console.log('result.data: ', result.data)
           wx.showToast({
-            title: '商品数据加载失败',
+            title: '加载失败',
           })
         }
       },
       fail: result => {
         wx.hideLoading()
         wx.showToast({
-          title: '商品数据加载失败',
+          title: '加载失败',
         })
       }
     });
