@@ -33,11 +33,13 @@
 /* 这样设置不是很好 */
 
 .home-main swiper {
-    height: 800rpx;
+    height: 100%;
 }
 
 .pic-play-box {
     padding-top: 40rpx;
+    height: 100%;
+    box-sizing: border-box;
 }
 
 .movie-title {

@@ -38,7 +38,7 @@ Page({
         wx.hideLoading()
         if (!result.data.code) {
           this.setData({
-            homeList: result.data.data
+            homeList: result.data.data.splice(0,3) // 取3条数据，此处应该分页展示的
           })
         } else {
           wx.showToast({
