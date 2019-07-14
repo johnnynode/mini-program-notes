@@ -18,8 +18,36 @@ Page({
     
   },
 
+  /* 获取电影详情信息 */
+  getDetail(id) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    qcloud.request({
+      url: config.service.movieDetail,
+      success: result => {
+        wx.hideLoading()
+        if (!result.data.code) {
+          this.setData({
+            movieDetail: result.data.data
+          })
+        } else {
+          wx.showToast({
+            title: '加载失败',
+          })
+        }
+      },
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载失败',
+        })
+      }
+    });
+  },
+
   /* 打开actionsheet */
-  openActionsheet: function(e) {
+  openActionsheet(e) {
     wx.showActionSheet({
       itemList: ['文字','音频'],
       itemColor: '#007aff',

@@ -33,7 +33,7 @@ Page({
       title: '加载中',
     })
     qcloud.request({
-      url: config.service.homeList,
+      url: config.service.movieRecommend,
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
