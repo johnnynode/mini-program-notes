@@ -68,6 +68,7 @@ CREATE TABLE `movies_comment` (
 
 CREATE TABLE `movies_collection_user` (
   `id` int(11) NOT NULL,
+  `cid` int(11) NOT NULL,
   `user` varchar(255) NOT NULL,
   `create_time` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -133,5 +134,5 @@ ALTER TABLE `movies_comment`
 -- 限制表 `movies_collection_user`
 --
 ALTER TABLE `movies_collection_user`
-  ADD CONSTRAINT `m_c_link` FOREIGN KEY (`id`) REFERENCES `movies_list` (`id`);
+  ADD CONSTRAINT `m_c_link` FOREIGN KEY (`cid`) REFERENCES `movies_comment` (`id`);
 COMMIT;
