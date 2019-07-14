@@ -41,6 +41,7 @@ Page({
             productList: result.data.data
           })
         } else {
+          console.log('result.data: ', result.data)
           wx.showToast({
             title: '商品数据加载失败',
           })

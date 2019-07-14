@@ -8,7 +8,9 @@ module.exports = {
 
   async list(ctx) {
     try {
+      console.log('start')
       ctx.state.data = await DB.query("SELECT * FROM product;")
+      console.log(ctx.state.data)
     } catch (error) {
       console.log(error)
     }
