@@ -88,3 +88,14 @@
 .collected-movie .right-side .text {
     line-height: 50rpx;
 }
+
+.wx-login-btn {
+    width: 300rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+    color: #fff;
+    background: #ffa67f;
+    margin:0 auto;
+    text-align:center;
+    border-radius:3px;
+}

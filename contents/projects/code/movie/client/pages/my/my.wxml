@@ -3,8 +3,16 @@
 <view class='my-page'>
   <!-- 收藏影评按钮 -->
   <view class='toggle-btn'>收藏的影评 <view class='icon' style="background-image:{{'url(/images/down-arr.png)'}}"></view></view>
+  
+  <!-- 登录按钮 -->
+  <view wx:if="{{!userInfo}}">
+    <button wx:if="{{locationAuthType==0}}" class="wx-login-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+    <button wx:if="{{locationAuthType==1}}" class="wx-login-btn" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
+  </view>
+  
   <!-- 收藏影评列表 -->
-  <scroll-view class="my-main" scroll-y scroll-with-animation enable-back-to-top>
+  <scroll-view wx:if="{{userInfo}}" class="my-main" scroll-y scroll-with-animation enable-back-to-top>
+    <block wx:for="{{collectionList}}">
       <navigator class='movie-item-card collected-movie clearfix' url="/pages/movie/detail/detail?id={{1}}">
         <image class='pic' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
         <view class="left right-side">
@@ -17,7 +25,8 @@
           </view>
         </view>
       </navigator>
+    </block>
   </scroll-view>
   <!-- 回到首页按钮 -->
-  <view class='back-home-btn'>回到首页</view>
+  <view class='back-home-btn bd-t'>回到首页</view>
 </view>

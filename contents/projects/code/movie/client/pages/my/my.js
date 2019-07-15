@@ -1,91 +1,68 @@
 // pages/home/home.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
+const app = getApp()
 
 Page({
-
   /**
    * 页面的初始数据
    */
+
   data: {
-    productList: [], // 商品列表
+    userInfo: null,
+    locationAuthType: app.data.locationAuthType,
+    collectionList: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    this.getProductList()
-  },
-
-  getProductList() {
+  // 获取收藏列表
+  getCollectionList() {
     wx.showLoading({
-      title: '商品数据加载中',
+      title: '加载中',
     })
     qcloud.request({
-      url: config.service.productList,
+      url: config.service.userCollection,
       success: result => {
         wx.hideLoading()
-
         if (!result.data.code) {
           this.setData({
-            productList: result.data.data
+            userCollection: result.data.data
           })
         } else {
           wx.showToast({
-            title: '商品数据加载失败',
+            title: '加载失败',
           })
         }
       },
       fail: result => {
         wx.hideLoading()
         wx.showToast({
-          title: '商品数据加载失败',
+          title: '加载失败',
         })
       }
     });
   },
 
-  addToTrolley(event) {
-    let productId = event.currentTarget.dataset.id
-    let productList = this.data.productList
-    let product
-
-    for (let i = 0, len = productList.length; i < len; i++) {
-      if (productList[i].id === productId) {
-        product = productList[i]
-        break
+  // 点击登录
+  onTapLogin: function () {
+    app.login({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo,
+          locationAuthType: app.data.locationAuthType
+        })
+      },
+      error: () => {
+        this.setData({
+          locationAuthType: app.data.locationAuthType
+        })
       }
-    }
+    })
+  },
 
-    if (product) {
-      qcloud.request({
-        url: config.service.addTrolley,
-        login: true,
-        method: 'PUT',
-        data: product,
-        success: result => {
-          let data = result.data
-
-          if (!data.code) {
-            wx.showToast({
-              title: '已添加到购物车',
-            })
-          } else {
-            wx.showToast({
-              icon: 'none',
-              title: '添加到购物车失败',
-            })
-          }
-        },
-        fail: () => {
-          wx.showToast({
-            icon: 'none',
-            title: '添加到购物车失败',
-          })
-        }
-      })
-    }
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
   },
 
   /**
@@ -99,7 +76,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+      // 同步授权状态
+      this.setData({
+        locationAuthType: app.data.locationAuthType
+      })
+      app.checkSession({
+        success: ({ userInfo }) => {
+          this.setData({
+            userInfo
+          })
+          // 获取收藏列表
+          this.getCollectionList()
+        }
+      })
   },
 
   /**
