@@ -1,6 +1,6 @@
-// pages/home/home.js
 const qcloud = require('../../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../../config.js')
+const windowWidth = wx.getSystemInfoSync().windowWidth
 
 Page({
 
@@ -8,14 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    productList: [], // 商品列表
+    movieDetail: [], // 电影列表
+    movieTopWidth: 0.3 * windowWidth,
+    movieTopHeight: 0.46 * windowWidth
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    this.getDetail(options.id)
   },
 
   /* 获取电影详情信息 */
@@ -24,7 +26,7 @@ Page({
       title: '加载中',
     })
     qcloud.request({
-      url: config.service.movieDetail,
+      url: config.service.movieDetail + id,
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {

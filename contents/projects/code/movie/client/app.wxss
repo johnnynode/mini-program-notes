@@ -281,14 +281,14 @@ page {
 }
 
 .movie-common .pic {
-    width: 200rpx;
-    height: 300rpx;
+    width: 33%;
+    height: 40%;
     transform: translate3d(-50%, -44rpx, 0);
     -webkit-transform: translate3d(-50%, -44rpx, 0);
 }
 
 .movie-common .main-inner {
-    padding-top: 272rpx;
+    padding-top: 44%;
     color: #888;
     font-size: 28rpx;
     position: absolute;
@@ -349,6 +349,7 @@ page {
     color: #333;
     padding: 0 80rpx;
     font-weight: 600;
+    padding-bottom:20rpx;
 }
 
 .movie-item-card {

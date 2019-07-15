@@ -2,14 +2,14 @@
 
 <view class='movie-detail-page movie-common'>
   <!-- 图片信息 -->
-  <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <image class='pic left h-middle' mode="scaleToFill" src="{{movieDetail.image}}" style="width:{{movieTopWidth + 'px'}};height:{{movieTopHeight + 'px'}}"></image>
   <view class='main'>
     <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
       <!-- 主标题  -->
-      <view class='title ellipsis'>妇联</view>
+      <view class='title ellipsis'>{{movieDetail.title}}</view>
       <!-- 描述  -->
       <view class='dec'>
-        妇联简介
+        {{movieDetail.description}}
       </view>
     </scroll-view>
     <!-- 底部按钮 -->
