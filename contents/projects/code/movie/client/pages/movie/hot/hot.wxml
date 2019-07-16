@@ -1,20 +1,14 @@
 <!--pages/movie/hot/hot.wxml-->
 
 <view class='movie-hot-page'>
-  <!-- 单个项目 -->
-  <navigator class='movie-hot-item movie-item-card clearfix' url="/pages/movie/detail/detail?id={{1}}">
-    <image class='pic' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
-    <view class="left text">
-      <view class='title ellipsis'>付</view>
-      <view class='sub ellipsis'>类型: 动作</view>
-    </view>
-  </navigator>
-
-  <navigator class='movie-hot-item movie-item-card clearfix' url="/pages/movie/detail/detail?id={{1}}">
-    <image class='pic' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
-    <view class="left text">
-      <view class='title ellipsis'>付</view>
-      <view class='sub ellipsis'>类型: 动作</view>
-    </view>
-  </navigator>
+  <block wx:for="{{movieHotList}}">
+    <!-- 单个项目 -->
+    <navigator class='movie-hot-item movie-item-card clearfix' url="/pages/movie/detail/detail?id={{item.id}}">
+      <image class='pic' mode="scaleToFill" src="{{item.image}}"></image>
+      <view class="left text">
+        <view class='title ellipsis'>{{item.title}}</view>
+        <view class='sub ellipsis'>类型: {{item.category}}</view>
+      </view>
+    </navigator>
+  </block>
 </view>

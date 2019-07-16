@@ -35,6 +35,8 @@ router.post('/message', controllers.message.post)
 router.get('/movie/recommend', controllers.movie.recommend)
 // 获取商品详情
 router.get('/movie/:id', controllers.movie.detail)
+// 获取商品热门电影列表 hot
+router.get('/movie/hot', controllers.movie.hot)
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
 // 显示已购买订单

@@ -14,7 +14,7 @@ module.exports = {
     }
   },
 
-  detail: async ctx => {
+  async detail(ctx) {
     let id = + ctx.params.id
     let movieDetail
 
@@ -28,5 +28,13 @@ module.exports = {
     // product.firstComment = (await DB.query('SELECT * FROM comment WHERE comment.product_id = ? LIMIT 1 OFFSET 0', [productId]))[0] || null
 
     ctx.state.data = movieDetail
-  }
+  },
+
+  async hot(ctx) {
+    try {
+      ctx.state.data = await DB.query("SELECT * FROM movies_list;")
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
