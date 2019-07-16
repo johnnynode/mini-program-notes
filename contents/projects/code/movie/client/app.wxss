@@ -292,7 +292,7 @@ page {
     color: #888;
     font-size: 28rpx;
     position: absolute;
-    bottom: 0;
+    bottom: 200rpx;
     left: 0;
     right: 0;
     top: 80rpx;
