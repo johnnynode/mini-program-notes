@@ -8,12 +8,6 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
-      'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
-      'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
-      'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640',
-      'http://img3.redocn.com/tupian/20150530/daqigerenjianlifengmian_4388852.jpg'
-    ],
     indicatorDots: false,
     autoplay: false,
     interval: 5000,
@@ -23,7 +17,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
     this.getHomeList()
   },
 
@@ -53,48 +47,6 @@ Page({
         })
       }
     });
-  },
-
-  addToTrolley(event) {
-    let productId = event.currentTarget.dataset.id
-    let productList = this.data.productList
-    let product
-
-    for (let i = 0, len = productList.length; i < len; i++) {
-      if (productList[i].id === productId) {
-        product = productList[i]
-        break
-      }
-    }
-
-    if (product) {
-      qcloud.request({
-        url: config.service.addTrolley,
-        login: true,
-        method: 'PUT',
-        data: product,
-        success: result => {
-          let data = result.data
-
-          if (!data.code) {
-            wx.showToast({
-              title: '已添加到购物车',
-            })
-          } else {
-            wx.showToast({
-              icon: 'none',
-              title: '添加到购物车失败',
-            })
-          }
-        },
-        fail: () => {
-          wx.showToast({
-            icon: 'none',
-            title: '添加到购物车失败',
-          })
-        }
-      })
-    }
   },
 
   /**

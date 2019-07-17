@@ -24,7 +24,6 @@ Page({
         });
       }
     })
-    console.log(e.currentTarget.dataset['index']);
   },
 
   previewImg(event) {

@@ -157,6 +157,7 @@
   background: no-repeat center;
   background-size: 100% auto;
   display: inline-block;
+  margin-top: 5rpx;
 }
 
 .comments-input-box .voice-text {

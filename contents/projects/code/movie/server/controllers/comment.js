@@ -9,15 +9,13 @@ module.exports = {
     let user = ctx.state.$wxInfo.userinfo.openId
     let username = ctx.state.$wxInfo.userinfo.nickName
     let avatar = ctx.state.$wxInfo.userinfo.avatarUrl
-
-    let productId = +ctx.request.body.product_id
     let content = ctx.request.body.content || null
+    let type = +ctx.request.body.type
+    let movieId = +ctx.request.body.movie_id
 
-    let images = ctx.request.body.images || []
-    images = images.join(';;')
 
-    if (!isNaN(productId)) {
-      await DB.query('INSERT INTO comment(user, username, avatar, content, images, product_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, images, productId])
+    if (!isNaN(movieId)) {
+      await DB.query('INSERT INTO comment(user, username, avatar, content, type, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, type, movieId])
     }
 
     ctx.state.data = {}

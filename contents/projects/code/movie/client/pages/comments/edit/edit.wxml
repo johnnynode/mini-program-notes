@@ -1,20 +1,20 @@
 <!--pages/comments/edit/edit.wxml-->
 <view class='comments-edit-page movie-common'>
   <!-- 图片信息 -->
-  <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <image class='pic left h-middle' mode="scaleToFill" src="{{editObj.image}}" style="width:{{movieTopWidth + 'px'}};height:{{movieTopHeight + 'px'}}"></image>
   <view class='main'>
     <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
       <!-- 主标题  -->
-      <view class='title ellipsis'>妇联</view>
+      <view class='title ellipsis'>{{editObj.title}}</view>
       <!-- 语音和文字输入区域 -->
       <view class='comments-input-box'>
         <view class="box-main">
            <!-- 语音和文字的区别 -->
            <block>
-            <view class="text-zone">
+            <view class="text-zone" wx:if="{{editObj.num === 0}}">
                 <textarea placeholder="请输入您的影评内容..." auto-focus />
             </view>
-            <view class="voice-zone">
+            <view class="voice-zone" wx:if="{{editObj.num === 1}}">
                 <view class="voice-btn">
                     <view style="background-image: url(/images/voice.png)" class="voice-icon"></view>
                     <view class="voice-text">录音</view>
@@ -25,7 +25,7 @@
       </view>
     </scroll-view>
     <!-- 底部按钮 完成 -->
-    <view class='bottom-finish-btn'>
+    <view class='bottom-finish-btn' bindtap="submit">
         完成
     </view>
   </view>

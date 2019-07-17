@@ -50,13 +50,16 @@ Page({
 
   /* 打开actionsheet */
   openActionsheet(e) {
+    let id = this.data.movieDetail.id;
+    let image = this.data.movieDetail.image;
+    let title = this.data.movieDetail.title;
     wx.showActionSheet({
       itemList: ['文字','音频'],
       itemColor: '#007aff',
       success(res) {
         // 跳转到编辑影评页面
         wx.navigateTo({
-          url: '../../comments/list/list?type=' + res.tapIndex
+          url: '../../comments/edit/edit?num=' + res.tapIndex + '&id=' + id + '&image=' + image + '&title=' + title
         });
       }
     })

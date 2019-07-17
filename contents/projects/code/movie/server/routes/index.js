@@ -37,6 +37,9 @@ router.get('/movie/recommend', controllers.movie.recommend)
 router.get('/movie/hot', controllers.movie.hot)
 // 获取商品详情
 router.get('/movie/:id', controllers.movie.detail)
+// 添加影评
+router.get('/movie/comment/add', controllers.movie.detail)
+
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
 // 显示已购买订单

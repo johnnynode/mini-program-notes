@@ -5,8 +5,8 @@
     <view class="pic-play-box">
       <swiper indicator-dots="{{indicatorDots}}"
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-        <block wx:for="{{homeList}}">
-          <swiper-item>
+        <block >
+          <swiper-item wx:for="{{homeList}}">
             <navigator url="../movie/detail/detail?id={{item.id}}" open-type="redirect" hover-class="other-navigator-hover">
               <image src="{{item.image}}" class="slide-image" mode="widthFix" style="width:730rpx" />
               <view class="movie-title">{{item.title}}</view>
