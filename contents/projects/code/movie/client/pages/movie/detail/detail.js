@@ -3,7 +3,6 @@ const config = require('../../../config.js')
 const windowWidth = wx.getSystemInfoSync().windowWidth
 
 Page({
-
   /**
    * 页面的初始数据
    */

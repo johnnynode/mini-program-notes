@@ -3,6 +3,7 @@ const qcloud = require('../../../vendor/wafer2-client-sdk/index')
 const config = require('../../../config')
 const _ = require('../../../utils/util')
 const windowWidth = wx.getSystemInfoSync().windowWidth
+const app = getApp()
 
 Page({
 
