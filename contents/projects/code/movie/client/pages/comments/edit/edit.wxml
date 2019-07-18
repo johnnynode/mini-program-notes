@@ -12,7 +12,7 @@
            <!-- 语音和文字的区别 -->
            <block>
             <view class="text-zone" wx:if="{{editObj.num === 0}}">
-                <textarea placeholder="请输入您的影评内容..." auto-focus />
+                <textarea  placeholder="请输入您的影评内容..." auto-focus="{{true}}" focus="{{true}}" bindinput="textInput" value="{{commentObj.text}}" />
             </view>
             <view class="voice-zone" wx:if="{{editObj.num === 1}}">
                 <view class="voice-btn">

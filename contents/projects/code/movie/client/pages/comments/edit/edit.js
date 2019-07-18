@@ -21,39 +21,6 @@ Page({
     movieTopHeight: 0.46 * windowWidth
   },
 
-  previewImg(event) {
-    let target = event.currentTarget
-    let src = target.dataset.src
-    let urls = target.dataset.urls
-
-    wx.previewImage({
-      current: src,
-      urls: urls
-    })
-  },
-
-  getCommentList(id) {
-    qcloud.request({
-      url: config.service.commentList,
-      data: {
-        product_id: id
-      },
-      success: result => {
-        let data = result.data
-        if (!data.code) {
-          this.setData({
-            commentList: data.data.map(item => {
-              let itemDate = new Date(item.create_time)
-              item.createTime = _.formatTime(itemDate)
-              item.images = item.images ? item.images.split(';;') : []
-              return item
-            })
-          })
-        }
-      },
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -67,13 +34,22 @@ Page({
     this.setData({editObj})
   },
 
+  // textarea 的输入监听
+  textInput(e) {
+    console.log(e.detail.value)
+    this.setData({
+      commentObj:{text: e.detail.value, voice: this.data.commentObj.voice}
+    })
+    console.log(this.data.commentObj)
+  },
+
   /* 完成按钮的点击 */
   submit() {
     if(!this.data.userInfo) {
       console.log('未登录!')
       return;
     }
-    let isText = this.data.num === 0
+    let isText = this.data.editObj.num === 0
     let postData = {
       movie_id: this.data.editObj.movie_id,
       type: this.data.editObj.num,
@@ -83,7 +59,7 @@ Page({
       avatar: this.data.userInfo.avatarUrl
     }
     // 相关校验程序
-    postData.content = postData.content.trim();
+    postData.content = postData.content.trim()
     if(!postData.content) {
       console.log('未' + (isText ? '填写' : '口述') + '影评!')
       return;
@@ -101,7 +77,6 @@ Page({
           wx.showToast({
             title: '评价成功',
           })
-
           // 跳转到预览页面
           
         } else {
