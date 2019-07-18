@@ -51,7 +51,7 @@ Page({
     }
     let isText = this.data.editObj.num === 0
     let postData = {
-      movie_id: this.data.editObj.movie_id,
+      movie_id: this.data.editObj.id,
       type: this.data.editObj.num,
       content: isText ? this.data.commentObj.text : this.data.commentObj.voice,
       user: this.data.userInfo.openId,
@@ -66,8 +66,7 @@ Page({
     }
     // 请求后台
     qcloud.request({
-      url: config.service.addMovieComment,
-      login: true,
+      url: config.service.movieComment,
       method: 'POST',
       data: postData,
       success: result => {

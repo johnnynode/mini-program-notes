@@ -35,10 +35,10 @@ router.post('/message', controllers.message.post)
 router.get('/movie/recommend', controllers.movie.recommend)
 // 获取商品热门电影列表 hot
 router.get('/movie/hot', controllers.movie.hot)
+// 添加影评
+router.post('/comment', validationMiddleware, controllers.comment.add)
 // 获取商品详情
 router.get('/movie/:id', controllers.movie.detail)
-// 添加影评
-router.get('/movie/comment/add', controllers.movie.detail)
 
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
@@ -51,8 +51,8 @@ router.get('/trolley', validationMiddleware, controllers.trolley.list)
 // 更新购物车商品列表
 router.post('/trolley', validationMiddleware, controllers.trolley.update)
 // 添加评论
-router.put('/comment', validationMiddleware, controllers.comment.add)
+// router.put('/comment', validationMiddleware, controllers.comment.add)
 // 获取评论列表
-router.get('/comment', controllers.comment.list)
+// router.get('/comment', controllers.comment.list)
 
 module.exports = router

@@ -14,10 +14,15 @@ module.exports = {
     let movieId = +ctx.request.body.movie_id
 
     if (!isNaN(movieId)) {
-      await DB.query('INSERT INTO comment(user, username, avatar, content, type, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, type, movieId])
+      try {
+        let res = await DB.query('INSERT INTO movies_comment(user, username, avatar, content, type, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, type, movieId])
+        ctx.state.data = {'success:': true, message: res}
+      } catch(e) {
+        console.log('add comment')
+        console.log(e)
+        ctx.state.data = {'success:': false, 'message': e}
+      }
     }
-
-    ctx.state.data = {}
   },
 
   /**
@@ -27,7 +32,7 @@ module.exports = {
     let productId = +ctx.request.query.product_id
 
     if (!isNaN(productId)) {
-      ctx.state.data = await DB.query('select * from comment where comment.product_id = ?', [productId])
+      ctx.state.data = await DB.query('select * from movies_comment where comment.product_id = ?', [productId])
     } else {
       ctx.state.data = []
     }
