@@ -5,7 +5,7 @@ module.exports = {
   /**
    * 添加评论
    */
-  add: async ctx => {
+  async add(ctx) {
     let user = ctx.state.$wxInfo.userinfo.openId
     let username = ctx.state.$wxInfo.userinfo.nickName
     let avatar = ctx.state.$wxInfo.userinfo.avatarUrl
@@ -15,11 +15,9 @@ module.exports = {
 
     if (!isNaN(movieId)) {
       try {
-        let res = await DB.query('INSERT INTO movies_comment(user, username, avatar, content, type, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, type, movieId])
-        ctx.state.data = {'success:': true, message: res}
+        await DB.query('INSERT INTO movies_comment(user, username, avatar, content, type, movie_id) VALUES (?, ?, ?, ?, ?, ?)', [user, username, avatar, content, type, movieId])
+        ctx.state.data = {'success:': true}
       } catch(e) {
-        console.log('add comment')
-        console.log(e)
         ctx.state.data = {'success:': false, 'message': e}
       }
     }
@@ -28,7 +26,7 @@ module.exports = {
   /**
    * 获取评论列表
    */
-  list: async ctx => {
+  async list(ctx) { 
     let productId = +ctx.request.query.product_id
 
     if (!isNaN(productId)) {
