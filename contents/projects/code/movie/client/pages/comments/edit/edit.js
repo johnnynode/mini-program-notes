@@ -36,11 +36,9 @@ Page({
 
   // textarea 的输入监听
   textInput(e) {
-    console.log(e.detail.value)
     this.setData({
       commentObj:{text: e.detail.value, voice: this.data.commentObj.voice}
     })
-    console.log(this.data.commentObj)
   },
 
   /* 完成按钮的点击 */
@@ -49,6 +47,21 @@ Page({
       console.log('未登录!')
       return;
     }
+
+    // 跳转到预览影评页面
+    let editObj = this.data.editObj
+    let num = editObj.num
+    let id = editObj.id
+    let title = editObj.title
+    let image = editObj.image
+    let text = editObj.text
+    let voice = editObj.voice
+
+    wx.navigateTo({
+      url: '../preview/preview?num=' + num + '&id=' + id + '&title=' + title + '&image=' + image + '&text=' + text + '&voice=' + voice
+   })
+    return;
+    // 预览影评页面逻辑
     let isText = this.data.editObj.num === 0
     let postData = {
       movie_id: this.data.editObj.id,
@@ -68,6 +81,7 @@ Page({
     qcloud.request({
       url: config.service.movieComment,
       method: 'POST',
+      login: true,
       data: postData,
       success: result => {
         wx.hideLoading()

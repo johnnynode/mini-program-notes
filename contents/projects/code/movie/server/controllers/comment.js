@@ -24,13 +24,13 @@ module.exports = {
   },
 
   /**
-   * 获取评论列表
+   * 获取电影评论列表
    */
-  async list(ctx) { 
-    let productId = +ctx.request.query.product_id
+  async list(ctx) {
+    let movieId = +ctx.request.query.movie_id
 
-    if (!isNaN(productId)) {
-      ctx.state.data = await DB.query('select * from movies_comment where comment.product_id = ?', [productId])
+    if (!isNaN(movieId)) {
+      ctx.state.data = await DB.query('select * from movies_comment where movies_comment.movie_id = ?', [movieId])
     } else {
       ctx.state.data = []
     }

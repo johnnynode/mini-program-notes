@@ -1,11 +1,43 @@
 <!--pages/preview/preview.wxml-->
-
-<view class='comments-preview-page'>
+<view class='comments-preview-page movie-common'>
   <!-- 图片信息 -->
-  
-  <!-- 主标题  -->
-
-  <!-- 描述  -->
-
-  <!-- 底部按钮  -->
+  <image class='pic left h-middle' mode="scaleToFill" src="{{previewObj.image}}" style="width:{{movieTopWidth + 'px'}};height:{{movieTopHeight + 'px'}}"></image>
+  <view class='main'>
+    <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
+      <!-- 主标题  -->
+      <view class='title ellipsis'>{{previewObj.title}}</view>
+      <!-- 语音和文字输入区域 -->
+      <view class='comments-input-box'>
+        <view class="box-main">
+           <!-- 语音和文字的区别 -->
+           <!-- 影评人 -->
+          <view class="user-info clearfix">
+            <view class='user-pic left' mode="scaleToFill" style="background-image:url({{userInfo.avatarUrl}})"></view>
+            <view class="user-name left">{{userInfo.nickName}}的影评</view>
+          </view>
+          <!-- 影评内容 -->
+          <view class="comment-zone">
+            <view class="deco">//</view>
+            <!-- 文字版本 -->
+            <text class="cont" wx:if="{{previewObj.num === 0}}">{{previewObj.text}}</text>
+            <!-- 语音版本 -->
+            <view class="cont" wx:if="{{previewObj.num === 1}}">{{previewObj.voice}}</view>
+          </view>   
+        </view>
+      </view>
+    </scroll-view>
+    <!-- 底部按钮 -->
+    <view class='bottom-bar-wrap'>
+      <view class='flex-box bottom-bar h-middle'>
+        <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
+          <view class='icon' style="background-image:{{'url(/images/back.png)'}}"></view>
+          <view>重新编辑</view>
+        </navigator>
+        <view class='flex' bindtap="submit">
+          <view class='icon' style="background-image:{{'url(/images/publish.png)'}}"></view>
+          <view>发布影评</view>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

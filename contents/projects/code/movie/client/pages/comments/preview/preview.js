@@ -2,6 +2,8 @@
 const qcloud = require('../../../vendor/wafer2-client-sdk/index')
 const config = require('../../../config')
 const _ = require('../../../utils/util')
+const windowWidth = wx.getSystemInfoSync().windowWidth
+const app = getApp()
 
 Page({
 
@@ -9,70 +11,49 @@ Page({
    * 页面的初始数据
    */
   data: {
-    commentList: [], // 评论列表
-  },
-
-  previewImg(event) {
-    let target = event.currentTarget
-    let src = target.dataset.src
-    let urls = target.dataset.urls
-
-    wx.previewImage({
-      current: src,
-      urls: urls
-    })
-  },
-
-  getCommentList(id) {
-    qcloud.request({
-      url: config.service.commentList,
-      data: {
-        product_id: id
-      },
-      success: result => {
-        let data = result.data
-        if (!data.code) {
-          this.setData({
-            commentList: data.data.map(item => {
-              let itemDate = new Date(item.create_time)
-              item.createTime = _.formatTime(itemDate)
-              item.images = item.images ? item.images.split(';;') : []
-              return item
-            })
-          })
-        }
-      },
-    })
+    userInfo: null,
+    commentObj: {
+      text: '',
+      voice: ''
+    },
+    previewObj: {},
+    movieTopWidth: 0.3 * windowWidth,
+    movieTopHeight: 0.46 * windowWidth
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let product = {
-      id: options.id,
-      name: options.name,
-      price: options.price,
-      image: options.image
+    let previewObj = {
+      num: +options.num,
+      id: +options.id,
+      title: options.title,
+      image: options.image,
+      text: options.text,
+      voice: options.voice,
     }
-    this.setData({
-      product: product
-    })
-    this.getCommentList(product.id)
+    this.setData({previewObj})
+    console.log('previewObj', previewObj)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow() {
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+      }
+    })
   },
 
   /**

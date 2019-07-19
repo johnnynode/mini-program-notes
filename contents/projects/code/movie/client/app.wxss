@@ -368,3 +368,13 @@ page {
     top: 0;
     left: 0;
 }
+
+.movie-common .bottom-bar-wrap .icon {
+    background: no-repeat center;
+    background-size: contain;
+    width: 50rpx;
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 14rpx;
+    margin-right: 20rpx;
+}

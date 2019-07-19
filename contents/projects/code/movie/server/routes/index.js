@@ -37,6 +37,8 @@ router.get('/movie/recommend', controllers.movie.recommend)
 router.get('/movie/hot', controllers.movie.hot)
 // 添加影评
 router.post('/comment', validationMiddleware, controllers.comment.add)
+// 获取影评列表
+router.get('/comment', validationMiddleware, controllers.comment.list)
 // 获取商品详情
 router.get('/movie/:id', controllers.movie.detail)
 
