@@ -18,6 +18,7 @@
 
 .comments-input-box .text-zone {
   padding-top: 40rpx;
+  padding: 40rpx 80rpx;
 }
 
 .comments-input-box .text-zone textarea {
