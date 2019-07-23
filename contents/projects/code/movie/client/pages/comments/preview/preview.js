@@ -34,7 +34,56 @@ Page({
       voice: options.voice,
     }
     this.setData({previewObj})
-    console.log('previewObj', previewObj)
+  },
+
+  submit() {
+    if(!this.data.userInfo) {
+      console.log('未登录!')
+      return;
+    }
+    // 预览影评页面逻辑
+    let previewObj = this.data.previewObj
+    let isText = previewObj.num === 0
+    let postData = {
+      movie_id: previewObj.id,
+      type: previewObj.num,
+      content: isText ? previewObj.text : previewObj.voice,
+      user: this.data.userInfo.openId,
+      username: this.data.userInfo.nickName,
+      avatar: this.data.userInfo.avatarUrl
+    }
+    
+    // 请求后台
+    qcloud.request({
+      url: config.service.movieComment,
+      method: 'POST',
+      login: true,
+      data: postData,
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          wx.showToast({
+            title: '评价成功',
+          })
+          // 跳转到预览页面
+          
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '评价失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '评价失败',
+        })
+      }
+    })
+
   },
 
   /**

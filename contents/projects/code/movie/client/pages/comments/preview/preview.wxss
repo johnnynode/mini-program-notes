@@ -11,7 +11,7 @@
 .user-pic {
     width: 80rpx;
     height: 80rpx;
-    background: no-repeat center;
+    background: #f9f9f9 no-repeat center;
     background-size: 100% auto;
     border-radius: 50%;
 }
