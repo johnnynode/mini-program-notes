@@ -42,72 +42,30 @@ Page({
   },
 
   /* 完成按钮的点击 */
-  submit() {
+  toPreview() {
+    // 相关校验程序
     if(!this.data.userInfo) {
       console.log('未登录!')
       return;
     }
-
-    // 跳转到预览影评页面
+    let commentObj = this.data.commentObj
     let editObj = this.data.editObj
     let num = editObj.num
-    let id = editObj.id
-    let title = editObj.title
-    let image = editObj.image
-    let text = editObj.text
-    let voice = editObj.voice
-
-    wx.navigateTo({
-      url: '../preview/preview?num=' + num + '&id=' + id + '&title=' + title + '&image=' + image + '&text=' + text + '&voice=' + voice
-   })
-    return;
-    // 预览影评页面逻辑
-    let isText = this.data.editObj.num === 0
-    let postData = {
-      movie_id: this.data.editObj.id,
-      type: this.data.editObj.num,
-      content: isText ? this.data.commentObj.text : this.data.commentObj.voice,
-      user: this.data.userInfo.openId,
-      username: this.data.userInfo.nickName,
-      avatar: this.data.userInfo.avatarUrl
-    }
-    // 相关校验程序
-    postData.content = postData.content.trim()
-    if(!postData.content) {
+    let isText = num === 0
+    let text = commentObj.text
+    let voice = commentObj.voice
+    let content = (isText ? text : voice).trim()
+    if(!content) {
       console.log('未' + (isText ? '填写' : '口述') + '影评!')
       return;
     }
-    // 请求后台
-    qcloud.request({
-      url: config.service.movieComment,
-      method: 'POST',
-      login: true,
-      data: postData,
-      success: result => {
-        wx.hideLoading()
-        let data = result.data
-        if (!data.code) {
-          wx.showToast({
-            title: '评价成功',
-          })
-          // 跳转到预览页面
-          
-        } else {
-          wx.showToast({
-            icon: 'none',
-            title: '评价失败',
-          })
-        }
-      },
-      fail: () => {
-        wx.hideLoading()
-        wx.showToast({
-          icon: 'none',
-          title: '评价失败',
-        })
-      }
-    })
-
+    let id = editObj.id
+    let title = editObj.title
+    let image = editObj.image
+    // 符合条件后跳转
+    wx.navigateTo({
+      url: '../preview/preview?num=' + num + '&id=' + id + '&title=' + title + '&image=' + image + '&text=' + text + '&voice=' + voice
+   })
   },
 
   /**

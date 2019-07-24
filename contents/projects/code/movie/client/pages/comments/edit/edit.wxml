@@ -28,7 +28,7 @@
       </view>
     </scroll-view>
     <!-- 底部按钮 完成 -->
-    <view class='bottom-finish-btn' bindtap="submit">
+    <view class='bottom-finish-btn' bindtap="toPreview">
         完成
     </view>
   </view>
