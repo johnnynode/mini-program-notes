@@ -6,7 +6,7 @@
     "pages/movie/detail/detail",
     "pages/comments/list/list",
     "pages/comments/detail/detail",
-    "pages/comments/edit/edit",
+    "pages/comments/add/add",
     "pages/comments/preview/preview",
 
     "pages/order/order",

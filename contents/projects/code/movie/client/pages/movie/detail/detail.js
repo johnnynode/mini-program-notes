@@ -58,7 +58,7 @@ Page({
       success(res) {
         // 跳转到编辑影评页面
         wx.navigateTo({
-          url: '../../comments/edit/edit?num=' + res.tapIndex + '&id=' + id + '&image=' + image + '&title=' + title
+          url: '../../comments/add/add?num=' + res.tapIndex + '&id=' + id + '&image=' + image + '&title=' + title
         });
       }
     })
