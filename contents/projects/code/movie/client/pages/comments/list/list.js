@@ -20,7 +20,7 @@ Page({
       title: '加载中',
     })
     qcloud.request({
-      url: config.service.commentList,
+      url: config.service.comment + id,
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {

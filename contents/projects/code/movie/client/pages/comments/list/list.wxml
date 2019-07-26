@@ -1,36 +1,19 @@
 <!--pages/comments/list/list.wxml-->
 <!-- 列表结构 -->
 <scroll-view class="comments-list-main" scroll-y scroll-with-animation enable-back-to-top>
-  <navigator class="comments-item bd-b" url="/pages/comments/detail/detail?id={{1}}">
+  <navigator wx:for="{{commentList}}" class="comments-item bd-b" url="/pages/comments/detail/detail?id={{item.id}}">
     <view class='top'>
-        <image class='pic'></image>
-        <view class='name'> 123</view>
+        <view class='pic' style="background-image:url({{item.avatar}})"></view>
+        <view class='name'>{{item.username}}</view>
     </view>
     <block>
       <!-- 文字 -->
-      <view class='bottom ellipsis' wx:if='{{true}}'>
-        wome的大背景
+      <view class='bottom ellipsis' wx:if='{{item.type === 0}}'>
+        {{item.content}}
       </view>
       <!-- 语音 -->
-      <view class='bottom ellipsis' wx:if='{{false}}'>
-        voice
-      </view>
-    </block>
-  </navigator>
-
-  <navigator class="comments-item bd-b" url="/pages/comments/detail/detail?id={{1}}">
-    <view class='top'>
-        <image class='pic'></image>
-        <view class='name'> 123</view>
-    </view>
-    <block>
-      <!-- 文字 -->
-      <view class='bottom ellipsis' wx:if='{{false}}'>
-        wome的大背景
-      </view>
-      <!-- 语音 -->
-      <view class='bottom ellipsis' wx:if='{{true}}'>
-        voice
+      <view class='bottom ellipsis' wx:if='{{item.type === 1}}'>
+        音频播放器 {{item.content}}
       </view>
     </block>
   </navigator>

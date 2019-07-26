@@ -27,10 +27,15 @@ module.exports = {
    * 获取电影评论列表
    */
   async list(ctx) {
-    let movieId = +ctx.request.query.movie_id
+    let movieId = + ctx.params.id
 
     if (!isNaN(movieId)) {
-      ctx.state.data = await DB.query('select * from movies_comment where movies_comment.movie_id = ?', [movieId])
+      try {
+        ctx.state.data = await DB.query('select * from movies_comment where movies_comment.movie_id = ?', [movieId])
+      } catch(e) {
+        console.log('e')
+        ctx.state.data = []
+      }
     } else {
       ctx.state.data = []
     }

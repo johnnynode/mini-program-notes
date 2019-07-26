@@ -38,7 +38,8 @@
 .comments-item .pic {
   width: 80rpx;
   height: 80rpx;
-  background: pink;
+  background: no-repeat center;
+  background-size: 100% auto;
   border-radius: 50%;
 }
 
