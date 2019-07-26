@@ -12,53 +12,41 @@ Page({
     commentList: [], // 评论列表
   },
 
-  previewImg(event) {
-    let target = event.currentTarget
-    let src = target.dataset.src
-    let urls = target.dataset.urls
-
-    wx.previewImage({
-      current: src,
-      urls: urls
-    })
-  },
-
+  /**
+   * 获取评论列表
+   */
   getCommentList(id) {
+    wx.showLoading({
+      title: '加载中',
+    })
     qcloud.request({
       url: config.service.commentList,
-      data: {
-        product_id: id
-      },
       success: result => {
-        let data = result.data
-        if (!data.code) {
+        wx.hideLoading()
+        if (!result.data.code) {
           this.setData({
-            commentList: data.data.map(item => {
-              let itemDate = new Date(item.create_time)
-              item.createTime = _.formatTime(itemDate)
-              item.images = item.images ? item.images.split(';;') : []
-              return item
-            })
+            commentList: result.data.data
+          })
+        } else {
+          wx.showToast({
+            title: '加载失败',
           })
         }
       },
-    })
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载失败',
+        })
+      }
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let product = {
-      id: options.id,
-      name: options.name,
-      price: options.price,
-      image: options.image
-    }
-    this.setData({
-      product: product
-    })
-    this.getCommentList(product.id)
+    this.getCommentList(options.id)
   },
 
   /**

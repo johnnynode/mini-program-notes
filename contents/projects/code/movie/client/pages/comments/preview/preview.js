@@ -55,7 +55,7 @@ Page({
     
     // 请求后台
     qcloud.request({
-      url: config.service.movieComment,
+      url: config.service.addComment,
       method: 'POST',
       login: true,
       data: postData,
