@@ -39,8 +39,10 @@ router.get('/movie/hot', controllers.movie.hot)
 router.get('/movie/:id', controllers.movie.detail)
 // 添加影评
 router.post('/comment', validationMiddleware, controllers.comment.add)
-// 获取影评列表
+// 获取电影影评列表
 router.get('/comment/:id', validationMiddleware, controllers.comment.list)
+// 获取影评列表
+router.get('/comment/detail/:id', validationMiddleware, controllers.comment.detail)
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
 // 显示已购买订单

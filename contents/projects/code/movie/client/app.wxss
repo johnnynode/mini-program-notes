@@ -373,10 +373,53 @@ page {
 
 .movie-common .bottom-bar-wrap .icon {
     background: no-repeat center;
-    background-size: contain;
+    background-size: 100% auto;
     width: 50rpx;
     vertical-align: top;
     display: inline-block;
     margin-top: 14rpx;
     margin-right: 20rpx;
+}
+
+.movie-common .box-main {
+    padding: 0 70rpx;
+}
+
+.movie-common .box-main .user-pic {
+    width: 80rpx;
+    height: 80rpx;
+    background: #f9f9f9 no-repeat center;
+    background-size: 100% auto;
+    border-radius: 50%;
+}
+
+.movie-common .box-main .user-name {
+    line-height: 80rpx;
+    padding-left: 20rpx;
+}
+
+.movie-common .box-main .comment-zone {
+    padding: 30rpx 30rpx 30rpx 100rpx;
+    position: relative;
+}
+
+.movie-common .box-main .comment-zone .left:first-child {
+    color: #333;
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+}
+
+.movie-common .box-main .comment-zone .deco {
+    position: absolute;
+    width: 80rpx;
+    height: 80rpx;
+    left: 0;
+    text-align:center;
+    line-height:50rpx;
+}
+
+.movie-common .box-main .comment-zone .cont {
+    line-height: 50rpx;
+    color: #666;
 }

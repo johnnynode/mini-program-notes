@@ -1,26 +1,33 @@
 <!--pages/comments/detail/detail.wxml-->
 
 <view class='comments-detail-page movie-common'>
-  <!-- 图片信息 -->
-  <image class='pic left h-middle' mode="scaleToFill" src='http://img1.imgtn.bdimg.com/it/u=1134080428,55002573&fm=26&gp=0.jpg'></image>
+  <view class="pic-wrap h-middle">
+    <!-- 图片信息 -->
+    <image class='pic' mode="scaleToFill" src="{{commentDetail.image}}" style="width:{{movieTopWidth + 'px'}};height:{{movieTopHeight + 'px'}}"></image>
+    <!-- 主标题  -->
+    <view class='title ellipsis'>{{commentDetail.title}}</view>
+  </view>
+  
   <view class='main'>
     <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
-      <!-- 主标题  -->
-      <view class='title ellipsis'>妇联</view>
       <!-- 影评盒子 -->
       <view class='comments-box'>
         <view class="box-top"></view>
         <view class="box-main">
-           <!-- 语音和文字的区别 -->
-           <block>
-            <view class="text-zone">
-                
-            </view>
-            <view class="voice-zone">
-            
-            </view>
-           </block>
-
+          <!-- 语音和文字的区别 -->
+          <!-- 影评人 -->
+          <view class="user-info clearfix">
+            <view class='user-pic left' mode="scaleToFill" style="background-image:url({{commentDetail.avatar}})"></view>
+            <view class="user-name left">{{commentDetail.username}}的影评</view>
+          </view>
+          <!-- 影评内容 -->
+          <view class="comment-zone">
+            <view class="deco">//</view>
+            <!-- 文字版本 -->
+            <text class="cont" wx:if="{{commentDetail.type === 0}}">{{commentDetail.content}}</text>
+            <!-- 语音版本 -->
+            <view class="cont" wx:if="{{commentDetail.type === 1}}">{{commentDetail.content}}</view>
+          </view>   
         </view>
       </view>
     </scroll-view>

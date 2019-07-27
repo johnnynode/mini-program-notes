@@ -2,6 +2,7 @@
 const qcloud = require('../../../vendor/wafer2-client-sdk/index')
 const config = require('../../../config')
 const _ = require('../../../utils/util')
+const windowWidth = wx.getSystemInfoSync().windowWidth
 
 Page({
 
@@ -9,7 +10,38 @@ Page({
    * 页面的初始数据
    */
   data: {
-    commentList: [] // 评论列表
+    commentDetail: {}, // 评论详情
+    movieTopWidth: 0.3 * windowWidth,
+    movieTopHeight: 0.46 * windowWidth
+  },
+
+  // 查询影评详情
+  getCommentDetail(id) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    qcloud.request({
+      url: config.service.commentDetail + id,
+      success: result => {
+        wx.hideLoading()
+        if (!result.data.code) {
+          this.setData({
+            commentDetail: result.data.data
+          })
+          console.log(this.data.commentDetail)
+        } else {
+          wx.showToast({
+            title: '加载失败',
+          })
+        }
+      },
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载失败',
+        })
+      }
+    });
   },
 
   // 弹出 openActionsheet
@@ -26,53 +58,11 @@ Page({
     })
   },
 
-  previewImg(event) {
-    let target = event.currentTarget
-    let src = target.dataset.src
-    let urls = target.dataset.urls
-
-    wx.previewImage({
-      current: src,
-      urls: urls
-    })
-  },
-
-  getCommentList(id) {
-    qcloud.request({
-      url: config.service.commentList,
-      data: {
-        product_id: id
-      },
-      success: result => {
-        let data = result.data
-        if (!data.code) {
-          this.setData({
-            commentList: data.data.map(item => {
-              let itemDate = new Date(item.create_time)
-              item.createTime = _.formatTime(itemDate)
-              item.images = item.images ? item.images.split(';;') : []
-              return item
-            })
-          })
-        }
-      },
-    })
-  },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let product = {
-      id: options.id,
-      name: options.name,
-      price: options.price,
-      image: options.image
-    }
-    this.setData({
-      product: product
-    })
-    this.getCommentList(product.id)
+    this.getCommentDetail(options.id)
   },
 
   /**

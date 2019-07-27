@@ -10,23 +10,21 @@
     <!-- 主标题  -->
     <scroll-view class="main-inner" scroll-y scroll-with-animation enable-back-to-top>
       <!-- 语音和文字输入区域 -->
-      <view class='comments-input-box'>
-        <view class="box-main">
-           <!-- 语音和文字的区别 -->
-           <!-- 影评人 -->
-          <view class="user-info clearfix">
-            <view class='user-pic left' mode="scaleToFill" style="background-image:url({{userInfo.avatarUrl}})"></view>
-            <view class="user-name left">{{userInfo.nickName}}的影评</view>
-          </view>
-          <!-- 影评内容 -->
-          <view class="comment-zone">
-            <view class="deco">//</view>
-            <!-- 文字版本 -->
-            <text class="cont" wx:if="{{previewObj.num === 0}}">{{previewObj.text}}</text>
-            <!-- 语音版本 -->
-            <view class="cont" wx:if="{{previewObj.num === 1}}">{{previewObj.voice}}</view>
-          </view>   
+      <view class="box-main">
+        <!-- 语音和文字的区别 -->
+        <!-- 影评人 -->
+        <view class="user-info clearfix">
+          <view class='user-pic left' mode="scaleToFill" style="background-image:url({{userInfo.avatarUrl}})"></view>
+          <view class="user-name left">{{userInfo.nickName}}的影评</view>
         </view>
+        <!-- 影评内容 -->
+        <view class="comment-zone">
+          <view class="deco">//</view>
+          <!-- 文字版本 -->
+          <text class="cont" wx:if="{{previewObj.num === 0}}">{{previewObj.text}}</text>
+          <!-- 语音版本 -->
+          <view class="cont" wx:if="{{previewObj.num === 1}}">{{previewObj.voice}}</view>
+        </view>   
       </view>
     </scroll-view>
     <!-- 底部按钮 -->

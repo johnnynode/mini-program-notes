@@ -66,7 +66,7 @@ Page({
           wx.showToast({
             title: '评价成功',
           })
-          // 跳转到预览页面
+          // 跳转到影评列表页面
           
         } else {
           wx.showToast({

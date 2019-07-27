@@ -33,11 +33,28 @@ module.exports = {
       try {
         ctx.state.data = await DB.query('select * from movies_comment where movies_comment.movie_id = ?', [movieId])
       } catch(e) {
-        console.log('e')
         ctx.state.data = []
       }
     } else {
       ctx.state.data = []
+    }
+  },
+
+  /**
+   * 获取电影评论列表
+   */
+  async detail(ctx) {
+    let commentId = + ctx.params.id
+
+    if (!isNaN(commentId)) {
+      try {
+        ctx.state.data = (await DB.query('select * from movies_comment as mc inner join movies_list as ml where mc.movie_id = ml.id and mc.id = ?', [commentId]))[0]
+      } catch(e) {
+        console.log('e')
+        ctx.state.data = {}
+      }
+    } else {
+      ctx.state.data = {}
     }
   },
 }
