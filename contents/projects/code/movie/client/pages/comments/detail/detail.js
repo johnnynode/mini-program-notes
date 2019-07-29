@@ -3,16 +3,92 @@ const qcloud = require('../../../vendor/wafer2-client-sdk/index')
 const config = require('../../../config')
 const _ = require('../../../utils/util')
 const windowWidth = wx.getSystemInfoSync().windowWidth
+const app = getApp()
+let collectionFlag = false; // 用于控制切换收藏的哨兵变量
 
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: null,
     commentDetail: {}, // 评论详情
     movieTopWidth: 0.3 * windowWidth,
-    movieTopHeight: 0.46 * windowWidth
+    movieTopHeight: 0.46 * windowWidth,
+    isCollection: false
+  },
+
+  // 获取收藏状态
+  getCollectionState(id, user) {
+    wx.showLoading({
+      title: '加载中',
+    })
+    qcloud.request({
+      url: config.service.collection + '?id=' + id + '&user=' + user,
+      success: result => {
+        wx.hideLoading()
+        if (!result.data.code) {
+          this.setData({
+            isCollection: result.data.data
+          })
+        } else {
+          wx.showToast({
+            title: '加载失败',
+          })
+        }
+      },
+      fail: result => {
+        wx.hideLoading()
+        wx.showToast({
+          title: '加载失败',
+        })
+      }
+    });
+  },
+
+  // 切换收藏 post
+  switchCollection() {
+    // 函数节流，哨兵拦截
+    if(collectionFlag) {
+      return;
+    }
+    collectionFlag = true;
+    
+    let postData = {
+      id: this.data.commentDetail.id,
+      user: userInfo.openId
+    }
+    // 请求后台
+    qcloud.request({
+      url: config.service.collection,
+      method: 'POST',
+      login: true,
+      data: postData,
+      success: result => {
+        wx.hideLoading()
+        let data = result.data
+        if (!data.code) {
+          wx.showToast({
+            title: '更新成功!',
+          })
+        } else {
+          wx.showToast({
+            icon: 'none',
+            title: '评价失败',
+          })
+        }
+      },
+      fail: () => {
+        wx.hideLoading()
+        wx.showToast({
+          icon: 'none',
+          title: '收藏状态更新失败!',
+        })
+      },
+      complete () {
+        collectionFlag = false;
+      }
+    })
   },
 
   // 查询影评详情
@@ -65,8 +141,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.getCommentDetail(options.id)
+  onLoad (options) {
+    // 获取评论详情
+    let id = options.id;
+    this.getCommentDetail(id)
+    // 获取用户信息
+    app.checkSession({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+        // 获取评论收藏状态
+        this.getCollectionState(id, userInfo.openId)
+      }
+    })
   },
 
   /**
@@ -79,8 +167,8 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow() {
+    
   },
 
   /**

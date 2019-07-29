@@ -52,7 +52,6 @@ Page({
       username: this.data.userInfo.nickName,
       avatar: this.data.userInfo.avatarUrl
     }
-    
     // 请求后台
     qcloud.request({
       url: config.service.comment,
@@ -83,7 +82,6 @@ Page({
         })
       }
     })
-
   },
 
   /**

@@ -34,10 +34,10 @@
     <!-- 底部按钮 -->
     <view class='bottom-bar-wrap'>
       <view class='flex-box bottom-bar h-middle'>
-        <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
-          <view class='icon {{"cur"}}' style="background-image:{{'url(/images/star.png)'}}"></view>
+        <view class='flex' bindtap="switchCollection">
+          <view class='icon {{isCollection ? "cur" : ""}}' style="background-image:{{'url(/images/star.png)'}}"></view>
           <view>收藏影评</view>
-        </navigator>
+        </view>
         <view class='flex' bindtap="openActionsheet">
           <view class='icon' style="background-image:{{'url(/images/pen.png)'}}"></view>
           <view>写影评</view>

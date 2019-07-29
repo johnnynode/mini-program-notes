@@ -43,6 +43,10 @@ router.post('/comment', validationMiddleware, controllers.comment.add)
 router.get('/comment/:id', validationMiddleware, controllers.comment.list)
 // 获取影评列表
 router.get('/comment/detail/:id', validationMiddleware, controllers.comment.detail)
+// 获取收藏状态
+router.get('/collection', controllers.collection.getState)
+// 更新收藏状态
+router.post('/collection', validationMiddleware, controllers.collection.update)
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
 // 显示已购买订单
