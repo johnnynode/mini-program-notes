@@ -46,13 +46,17 @@ Page({
 
   // 弹出 openActionsheet
   openActionsheet: function(e) {
+    let commentDetail = this.data.commentDetail;
+    let id = commentDetail.movie_id;
+    let image = commentDetail.image;
+    let title = commentDetail.title;
     wx.showActionSheet({
       itemList: ['文字','音频'],
       itemColor: '#007aff',
       success(res) {
         // 跳转到编辑影评页面
         wx.navigateTo({
-          url: '../../comments/edit/edit?type=' + res.tapIndex
+          url: '../../comments/add/add?num=' + res.tapIndex + '&id=' + id + '&image=' + image + '&title=' + title
         });
       }
     })
