@@ -7,7 +7,7 @@
         autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
         <block >
           <swiper-item wx:for="{{homeList}}">
-            <navigator url="../movie/detail/detail?id={{item.id}}" open-type="redirect" hover-class="other-navigator-hover">
+            <navigator url="../movie/detail/detail?id={{item.id}}" open-type="navigate" hover-class="other-navigator-hover">
               <image src="{{item.image}}" class="slide-image" mode="widthFix" style="width:730rpx" />
               <view class="movie-title">{{item.title}}</view>
               <view class="movie-info" wx:if="{{false}}">
