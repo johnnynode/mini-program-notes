@@ -47,6 +47,8 @@ router.get('/comment/detail/:id', validationMiddleware, controllers.comment.deta
 router.get('/collection', controllers.collection.getState)
 // 更新收藏状态
 router.post('/collection', validationMiddleware, controllers.collection.update)
+// 获取用户收藏列表
+router.get('/user/collection', validationMiddleware, controllers.collection.list)
 // 创建订单
 router.post('/order', validationMiddleware, controllers.order.add)
 // 显示已购买订单
