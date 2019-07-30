@@ -71,7 +71,7 @@ Page({
         let data = result.data
         if (!data.code) {
           wx.showToast({
-            title: '收藏状态更新成功!',
+            title: (data.data.data ? '' : '取消') + '收藏成功!'
           })
           this.setData({
             isCollection: data.data.data
