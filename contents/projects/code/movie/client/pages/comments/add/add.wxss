@@ -55,12 +55,12 @@
 }
 
 .comments-input-box .voice-icon {
-  width: 20px;
-  height: 30px;
+  width: 40rpx;
+  height: 60rpx;
   background: no-repeat center;
   background-size: 100% auto;
   display: inline-block;
-  margin-top: 5rpx;
+  margin-top: 8rpx;
 }
 
 .comments-input-box .voice-text {

@@ -29,7 +29,7 @@ Page({
         wx.hideLoading()
         if (!result.data.code) {
           this.setData({
-            isCollection: result.data.data
+            isCollection: result.data.data.data
           })
         } else {
           wx.showToast({
@@ -56,8 +56,10 @@ Page({
     
     let postData = {
       id: this.data.commentDetail.id,
-      user: this.data.userInfo.openId
+      user: this.data.userInfo.openId,
+      flag: !this.data.isCollection
     }
+    console.log(postData)
     // 请求后台
     qcloud.request({
       url: config.service.collection,
@@ -71,6 +73,12 @@ Page({
           wx.showToast({
             title: '收藏状态更新成功!',
           })
+          this.setData({
+            isCollection: data.data.data
+          })
+          console.log('xxxx')
+          console.log(this.data.isCollection)
+          console.log('........')
         } else {
           wx.showToast({
             icon: 'none',

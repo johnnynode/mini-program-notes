@@ -36,7 +36,7 @@
     box-sizing: border-box;
 }
 
-.my-page .back-home-btn {
+.my-page  .back-home-btn {
     position: absolute;
     left: 0;
     right: 0;

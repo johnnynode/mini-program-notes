@@ -31,7 +31,6 @@
 
 
 /* 这样设置不是很好 */
-
 .home-main swiper {
     height: 100%;
 }
