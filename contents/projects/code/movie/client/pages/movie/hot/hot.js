@@ -18,7 +18,7 @@ Page({
     this.getMovieHotList()
   },
 
-  getMovieHotList() {
+  getMovieHotList(callback) {
     wx.showLoading({
       title: '加载中',
     })
@@ -41,6 +41,9 @@ Page({
         wx.showToast({
           title: '加载失败',
         })
+      },
+      complete() {
+        callback && callback();
       }
     });
   },
@@ -76,8 +79,10 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
-
+  onPullDownRefresh() {
+    this.getMovieHotList(()=>{
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**

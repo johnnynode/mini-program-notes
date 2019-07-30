@@ -15,12 +15,12 @@ Page({
   },
 
   // 获取收藏列表
-  getCollectionList() {
+  getCollectionList(callback) {
     wx.showLoading({
       title: '加载中',
     })
     qcloud.request({
-      url: config.service.userCollection,
+      url: config.service.userCollection + '?user=' + this.data.userInfo.openId,
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
@@ -38,6 +38,9 @@ Page({
         wx.showToast({
           title: '加载失败',
         })
+      },
+      complete() {
+        callback && callback()
       }
     });
   },
@@ -57,6 +60,14 @@ Page({
         })
       }
     })
+  },
+
+  // 跳转到首页
+  toHome() {
+    // 直接跳转到首页
+    wx.reLaunch({
+      url: '/pages/home/home'
+    });
   },
 
   /**
@@ -109,7 +120,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getCollectionList(()=>{
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**

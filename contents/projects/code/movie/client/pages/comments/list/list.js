@@ -9,13 +9,14 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id: '',
     commentList: [], // 评论列表
   },
 
   /**
    * 获取评论列表
    */
-  getCommentList(id) {
+  getCommentList(id, callback) {
     wx.showLoading({
       title: '加载中',
     })
@@ -38,6 +39,9 @@ Page({
         wx.showToast({
           title: '加载失败',
         })
+      },
+      complete() {
+        callback && callback()
       }
     });
   },
@@ -46,7 +50,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getCommentList(options.id)
+    let id = options.id
+    this.setData({id})
+    this.getCommentList(id)
   },
 
   /**
@@ -81,7 +87,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.getCommentList(this.data.id, ()=>{
+      wx.stopPullDownRefresh()
+    })
   },
 
   /**

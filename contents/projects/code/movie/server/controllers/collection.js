@@ -62,7 +62,7 @@ module.exports = {
    */
   async list(ctx) {
     // let user = ctx.state.$wxInfo.userinfo.openId
-    let user = ctx.request.query.openId
+    let user = ctx.request.query.user
     if (user) {
       try {
         let list = await DB.query('select * from movies_collection_user as mcu inner join movies_comment as mc inner join movies_list as ml where mcu.user = ? and mcu.cid = mc.id and mc.movie_id = ml.id', [user])

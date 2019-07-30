@@ -28,5 +28,5 @@
     </block>
   </scroll-view>
   <!-- 回到首页按钮 -->
-  <view class='back-home-btn bd-t'>回到首页</view>
+  <view class='back-home-btn bd-t' bindtap="toHome">回到首页</view>
 </view>
