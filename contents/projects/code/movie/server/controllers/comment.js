@@ -48,7 +48,7 @@ module.exports = {
 
     if (!isNaN(commentId)) {
       try {
-        ctx.state.data = (await DB.query('select * from movies_comment as mc inner join movies_list as ml where mc.movie_id = ml.id and mc.id = ?', [commentId]))[0]
+        ctx.state.data = (await DB.query('select * from movies_comment as mc LEFT JOIN movies_list as ml where mc.movie_id = ml.id and mc.id = ?', [commentId]))[0]
       } catch(e) {
         console.log('e')
         ctx.state.data = {}

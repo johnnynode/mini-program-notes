@@ -56,7 +56,7 @@ Page({
     
     let postData = {
       id: this.data.commentDetail.id,
-      user: userInfo.openId
+      user: this.data.userInfo.openId
     }
     // 请求后台
     qcloud.request({

@@ -27,8 +27,8 @@
   </scroll-view>
 
   <view class='home-bottom flex-box'>
-    <link inner-text="热门" icon="/images/recomend.png" to="../movie/hot/hot" class-name="'flex'"></link>
-    <link inner-text="我的" icon="/images/my.png" to="../my/my" class-name="'flex'"></link>
+    <link inner-text="热门" type="0" icon="/images/recomend.png" to="../movie/hot/hot" class-name="'flex'"></link>
+    <link inner-text="我的" type="5" icon="/images/my.png" to="../my/my" class-name="'flex'"></link>
   </view>
 </view>
 

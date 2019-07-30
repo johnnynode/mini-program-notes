@@ -65,7 +65,7 @@ module.exports = {
     let user = ctx.request.query.user
     if (user) {
       try {
-        let list = await DB.query('select * from movies_collection_user as mcu inner join movies_comment as mc inner join movies_list as ml where mcu.user = ? and mcu.cid = mc.id and mc.movie_id = ml.id', [user])
+        let list = await DB.query('select * from movies_collection_user as mcu LEFT JOIN movies_comment as mc LEFT JOIN movies_list as ml where mcu.user = ? and mcu.cid = mc.id and mc.movie_id = ml.id', [user])
         console.log('list')
         console.log(list);
         // 设计返回值
