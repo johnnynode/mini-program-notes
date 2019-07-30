@@ -69,12 +69,12 @@ Page({
         let data = result.data
         if (!data.code) {
           wx.showToast({
-            title: '更新成功!',
+            title: '收藏状态更新成功!',
           })
         } else {
           wx.showToast({
             icon: 'none',
-            title: '评价失败',
+            title: '收藏状态更新失败!',
           })
         }
       },

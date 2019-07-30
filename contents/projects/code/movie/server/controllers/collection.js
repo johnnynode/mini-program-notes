@@ -12,7 +12,7 @@ module.exports = {
     
     if (!isNaN(id)) {
       try {
-        let res = await DB.query('select * from movies_collection_user where movies_collection_user.cid = ?', [id])
+        let res = await DB.query('select * from movies_collection_user as mcu where mcu.cid = ? and mcu.user = ?', [id, user])
         console.log('res')
         console.log(res);
         // 设计返回值
@@ -49,6 +49,27 @@ module.exports = {
         } else {
             ctx.state.data = {'success:': false}
         }
+      } catch(e) {
+        ctx.state.data = {'success:': false, 'message': e}
+      }
+    } else {
+        ctx.state.data = {'success:': false, 'message': '无效的id'}
+    }
+  },
+
+  /**
+   * 获取用户收藏列表
+   */
+  async list(ctx) {
+    // let user = ctx.state.$wxInfo.userinfo.openId
+    let user = ctx.request.query.openId
+    if (user) {
+      try {
+        let list = await DB.query('select * from movies_collection_user as mcu inner join movies_comment as mc inner join movies_list as ml where mcu.user = ? and mcu.cid = mc.id and mc.movie_id = ml.id', [user])
+        console.log('list')
+        console.log(list);
+        // 设计返回值
+        ctx.state.data = {'success:': true, 'data': list}
       } catch(e) {
         ctx.state.data = {'success:': false, 'message': e}
       }
