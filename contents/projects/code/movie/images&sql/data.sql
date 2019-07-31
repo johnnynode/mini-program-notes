@@ -2,8 +2,7 @@
 -- 定义 SQL 需要用到的变量
 --
 
-SET @IMAGE_BASE_URL = "https://your-pre-id.cos.ap-beijing.myqcloud.com/";
-
+SET @IMAGE_BASE_URL = "https://movie-1259316955.ap-beijing.myqcloud.com/";
 -- --------------------------------------------------------
 
 --
