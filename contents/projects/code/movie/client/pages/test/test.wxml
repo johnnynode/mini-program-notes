@@ -7,13 +7,20 @@ s
 
   <!-- audio.wxml -->
   <button type="primary" bindtap="play">Play</button>
+  <button type="primary" bindtap="pause">Pause</button>
+  <button type="primary" bindtap="audio14">Set the current play time to 14s</button>
+  <button type="primary" bindtap="audioStart">Return to the beginning</button>
   
   <view>&nbsp;</view>
-
+  <view>&nbsp;</view>
+  <view>&nbsp;</view>
 
   <!-- 音频盒子 -->
-  <view class="audio-box" bindtap="play">
-    <view style="background-image:url({{isPlaying ? '../../images/pause.png' : '../../images/play.png'}})" class="audio-icon"></view>
-    {{12}}s
-  </view>
+  <view class="audio-box">
+    <view class="audio-play" bindtap="play">
+      <view style="background-image:url({{isPlaying ? '../../images/pause.png' : '../../images/play.png'}})" class="audio-icon"></view>
+        {{12}}s
+    </view>
+    <!-- <view class="audio-pause" bindtap="pause" wx-if="{{isPlaying}}"></view> -->
+    </view>
 </view>

@@ -4,7 +4,7 @@ const config = require('../../config.js')
 
 const recorderManager = wx.getRecorderManager()
 const innerAudioContext = wx.createInnerAudioContext()
-
+innerAudioContext.src = 'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'
 Page({
   /**
    * 页面的初始数据
@@ -47,9 +47,12 @@ Page({
   // 播放或暂停音频
   play() {
     console.log('go!')
-    innerAudioContext.src = 'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'
     
     innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
+  },
+
+  pause() {
+    innerAudioContext.pause();
   },
   
   // 文件上传
