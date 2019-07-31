@@ -1,7 +1,5 @@
 <!-- 这是自定义组件的内部WXML结构 -->
-<view class="{{className}}" src="{{src}}" type="{{type}}" bindtap='jump'>
-    <view class="audio-box" bindtap="play">
-      <view style="background-image:url({{isPlaying ? '../../images/pause.png' : '../../images/play.png'}})" class="audio-icon"></view>
-          {{12}}s
-    </view>
+<view class="audio-box" bindtap="play">
+  <view style="background-image:url({{isPlaying ? '../../images/pause.png' : '../../images/play.png'}})" class="audio-icon"></view>
+      {{time}}s
 </view>

@@ -1,3 +1,4 @@
+const innerAudioContext = wx.createInnerAudioContext()
 Component({
     properties: {
       src: {
@@ -16,36 +17,28 @@ Component({
         type: String,
         value: '',
       },
-      innerAudioContext: {
+      audio: {
         type: Object,
-        value: wx.createInnerAudioContext(),
+        value: null
       }
     },
     data: {
-      // 这里是一些组件内部数据
-      innerAudioContext : wx.createInnerAudioContext(),
       isPlaying: false
     },
-    lifetimes: {
-      ready: function() {
-        console.log('this.properties.innerAudioContext');
-        console.log(this.properties.innerAudioContext);
-        console.log('....')
+    ready() {
         // 在组件实例进入页面节点树时执行
-        this.properties.innerAudioContext.src = this.properties.src.value;
-        this.audioListener();
-      },
-      detached: function() {
-        // 在组件实例被从页面节点树移除时执行
-      },
+        // this.properties.innerAudioContext.src = this.properties.src.value;
+        // this.audioListener();
+        innerAudioContext.src = this.properties.src
+        console.log(this.properties.audio)
     },
     methods: {
       // 这里是一个自定义方法
       play() {
-        this.properties.innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
+        console.log('here!')
+        innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
       },
       audioListener() {
-        let innerAudioContext = this.properties.innerAudioContext
         innerAudioContext.onPlay(() => {
           console.log('开始播放...!')
           this.setData({isPlaying: true})

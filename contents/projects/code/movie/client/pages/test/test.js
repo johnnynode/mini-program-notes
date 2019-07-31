@@ -11,7 +11,9 @@ Page({
    */
   data: {
     movieHotList: [],
-    isPlaying: false
+    isPlaying: false,
+    test: {a:1},
+    innerAudioContext : wx.createInnerAudioContext()
   },
 
   // 录音说话
