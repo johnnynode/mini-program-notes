@@ -412,9 +412,9 @@ page {
 
 .movie-common .box-main .comment-zone .deco {
     position: absolute;
-    width: 80rpx;
-    height: 80rpx;
-    left: 0;
+    width: 20rpx;
+    height: 20rpx;
+    left: 30rpx;
     text-align:center;
     line-height:50rpx;
 }

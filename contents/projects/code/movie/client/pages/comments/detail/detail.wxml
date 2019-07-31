@@ -22,11 +22,13 @@
           </view>
           <!-- 影评内容 -->
           <view class="comment-zone">
-            <view class="deco">//</view>
+            <view class="deco" style="background-image:url(/images/quote.png)"></view>
             <!-- 文字版本 -->
             <text class="cont" wx:if="{{commentDetail.type === 0}}">{{commentDetail.content}}</text>
             <!-- 语音版本 -->
-            <view class="cont" wx:if="{{commentDetail.type === 1}}">{{commentDetail.content}}</view>
+            <view class="cont" wx:if="{{commentDetail.type === 1}}">
+               <audioBox src="{{item.contentUrl}}" time="{{item.contentTime}}"></audioBox>
+            </view>
           </view>   
         </view>
       </view>
