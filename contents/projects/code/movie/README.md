@@ -18,7 +18,11 @@
 
 - (注：新版开发者工具已不支持腾讯云，项目基于腾讯云，所以用低版本，但低版本很多功能不再兼容了, 具体参考：[开发云替代腾讯云](https://developers.weixin.qq.com/community/develop/doc/000e22b2508a8043e857ece5d5ac00) )
 
+### 关于sql
+- data.sql 是初始化的表结构
+- data-all.sql 是开发完成的example
 
 ### todo 
 1. 分页展示
 2. 组件封装
+3. 音频相关：录音、上传、播放相关功能
