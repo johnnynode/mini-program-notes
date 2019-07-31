@@ -57,6 +57,10 @@
   padding: 10rpx 0;
 }
 
+.comments-item .bottom.audio {
+  margin: 30rpx 0 0 30rpx;
+}
+
 .comments-item:last-child::after {
   display: none;
 }

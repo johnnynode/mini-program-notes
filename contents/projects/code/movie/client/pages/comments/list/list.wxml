@@ -12,8 +12,8 @@
         {{item.content}}
       </view>
       <!-- 语音 -->
-      <view class='bottom ellipsis' wx:if='{{item.type === 1}}'>
-        音频播放器 {{item.content}}
+      <view class='bottom audio ellipsis' wx:if='{{item.type === 1}}'>
+        <audioBox src="{{item.contentUrl}}" time="12" disabled="{{true}}"></audioBox>
       </view>
     </block>
   </navigator>

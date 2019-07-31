@@ -1,6 +1,7 @@
 {
   "navigationBarTitleText": "影评列表",
   "usingComponents": {
-    "link": "/components/link/link"
+    "link": "/components/link/link",
+    "audioBox": "/components/audio/audio"
   }
 }

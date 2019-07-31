@@ -2,6 +2,7 @@
 
 .audio-box {
     min-width: 180rpx;
+    max-width: 300rpx;
     width: 70%;
     height: 60rpx;
     line-height: 60rpx;
