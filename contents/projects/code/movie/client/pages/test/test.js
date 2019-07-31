@@ -11,6 +11,7 @@ Page({
    */
   data: {
     movieHotList: [],
+    isPlaying: false
   },
 
   // 录音说话
@@ -43,17 +44,12 @@ Page({
     recorderManager.stop();
   },
 
-  // 播放音频
+  // 播放或暂停音频
   play() {
-    // innerAudioContext.autoplay = false
-    // innerAudioContext.src = this.tempFilePath, todo
     console.log('go!')
     innerAudioContext.src = 'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'
-    innerAudioContext.play(); // 播放
-  },
-
-  pause() {
-    innerAudioContext.pause(); // 暂停
+    
+    innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
   },
   
   // 文件上传
@@ -100,16 +96,19 @@ Page({
   audioListener() {
     innerAudioContext.onPlay(() => {
       console.log('开始播放...!')
+      this.setData({isPlaying: true})
     })
 
     innerAudioContext.onPause(() => {
       console.log('开始暂停...!')
+      this.setData({isPlaying: false})
     });
     
     // 测试播放
     innerAudioContext.onError((res) => {
       console.log(res.errMsg)
       console.log(res.errCode)
+      this.setData({isPlaying: false})
     })
   },
 

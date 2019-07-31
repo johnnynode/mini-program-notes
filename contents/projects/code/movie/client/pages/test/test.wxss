@@ -1,2 +1,25 @@
 /* pages/movie/hot/hot.wxss */
 
+.audio-box {
+    min-width: 180rpx;
+    width: 70%;
+    height: 60rpx;
+    line-height: 60rpx;
+    background: #d6dee5;
+    padding-left: 10%;
+    border-radius: 3px;
+}
+
+.audio-box .audio-icon {
+    width: 45rpx;
+    height: 45rpx;
+    border-radius: 50%;
+    background: no-repeat center;
+    background-size: 100% auto;
+    background-image:url('/images/play.png');
+    font-size:24rpx;
+    margin-right: 0;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 8rpx;
+}
