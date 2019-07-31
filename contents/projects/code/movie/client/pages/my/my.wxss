@@ -72,7 +72,8 @@
 .collected-movie .right-side .head-pic {
     width: 60rpx;
     height: 60rpx;
-    background: green;
+    background: no-repeat center;
+    background-size: 100% auto;
     border-radius: 50%;
     margin-right: 10rpx;
 }

@@ -22,10 +22,11 @@ Page({
     qcloud.request({
       url: config.service.userCollection + '?user=' + this.data.userInfo.openId,
       success: result => {
+        let data = result.data
         wx.hideLoading()
-        if (!result.data.code) {
+        if (!data.code) {
           this.setData({
-            userCollection: result.data.data
+            collectionList: data.data.data
           })
         } else {
           wx.showToast({

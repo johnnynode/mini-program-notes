@@ -17,8 +17,8 @@
         <image class='pic' mode="scaleToFill" src="{{item.image}}"></image>
         <view class="left right-side">
           <view class='title ellipsis'>{{item.title}}</view>
-          <view wx-if="{{false}}" class='voice ellipsis'></view>
-          <view wx-if="true" class='text '>{{item.content}}</view>
+          <view wx-if="{{item.type === 1}}" class='voice ellipsis'>{{item.content}}</view>
+          <view wx-if="{{item.type === 0}}" class='text'>{{item.content}}</view>
           <view class='box clearfix'>
             <view class='head-pic left' style="background-image:url({{item.avatar}})"></view>
             <view class='people left'>{{item.name}}</view>
