@@ -38,8 +38,10 @@ module.exports = {
       try {
         // 先查询该条记录
         let res = await DB.query('select * from movies_collection_user where cid = ? and user = ?', [id, user])
+        console.log('res')
+        console.log(res)
         if(!res.length && flag) {
-            // 查询不到， 添加收藏
+            // 查询不到，添加收藏
             await DB.query('INSERT INTO movies_collection_user(cid, user) VALUES (?, ?)', [id, user])
             ctx.state.data = {'success:': true, data: true}
         } else if(res.length && !flag) {

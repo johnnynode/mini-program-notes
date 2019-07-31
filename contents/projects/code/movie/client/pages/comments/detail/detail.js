@@ -55,11 +55,10 @@ Page({
     collectionFlag = true;
     
     let postData = {
-      id: this.data.commentDetail.id,
+      id: this.data.commentDetail.cid,
       user: this.data.userInfo.openId,
       flag: !this.data.isCollection
     }
-    console.log(postData)
     // 请求后台
     qcloud.request({
       url: config.service.collection,
