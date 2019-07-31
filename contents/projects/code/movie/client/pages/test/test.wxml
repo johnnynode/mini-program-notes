@@ -1,4 +1,7 @@
 s
 <view class='test-page'>
   test page
+  <view> ------------------------ </view>
+
+  <view catchtouchstart="say" catchtouchend="sayOver"> 点击录音 </view>
 </view>

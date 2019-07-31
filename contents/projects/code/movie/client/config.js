@@ -3,10 +3,8 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://yours.qcloud.la'; // 这里填写自己的域名地址
-
+var host = 'https://yours-id.qcloud.la'; // 这里填写自己的域名地址
 var config = {
-
   // 下面的地址配合云端 Demo 工作
   service: {
     host,
@@ -23,29 +21,10 @@ var config = {
     // 上传图片接口
     uploadUrl: `${host}/weapp/upload`,
 
-    // 获取产品列表
-    productList: `${host}/weapp/product`,
-
-    // 获取产品详情
-    productDetail: `${host}/weapp/product/`,
-
     // 拉取用户信息
     user: `${host}/weapp/user`,
 
-    // 创建订单
-    addOrder: `${host}/weapp/order`,
-
-    // 获取已购买订单列表
-    orderList: `${host}/weapp/order`,
-
-    // 添加到购物车商品列表
-    addTrolley: `${host}/weapp/trolley`,
-
-    // 获取购物车商品列表
-    trolleyList: `${host}/weapp/trolley`,
-
-    // 更新购物车商品列表
-    updateTrolley: `${host}/weapp/trolley`,
+    
 
     // 添加评论
     addComment: `${host}/weapp/comment`,
