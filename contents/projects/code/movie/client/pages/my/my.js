@@ -49,11 +49,15 @@ Page({
   // 点击登录
   onTapLogin: function () {
     app.login({
-      success: ({ userInfo }) => {
+      success: ({userInfo}) => {
         this.setData({
           userInfo,
           locationAuthType: app.data.locationAuthType
         })
+        // 获取收藏列表
+        console.log('go!')
+        console.log(this.data.userInfo)
+        this.getCollectionList()
       },
       error: () => {
         this.setData({

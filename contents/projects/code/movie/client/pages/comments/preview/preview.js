@@ -75,7 +75,12 @@ Page({
             title: '评价成功',
           })
           // 跳转到影评列表页面
-          
+          let timer = setTimeout(()=>{
+            clearTimeout(timer);
+            wx.navigateTo({
+              url: '../list/list?id=' + this.data.previewObj.id
+            })
+          }, 300)          
         } else {
           wx.showToast({
             icon: 'none',
