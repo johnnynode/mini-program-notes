@@ -65,3 +65,10 @@
   background: #fff;
   border-top: 1px solid #eee;
 }
+
+.no-data {
+  color: #ffa67f;
+  text-align:center;
+  font-size:32rpx;
+  line-height:180rpx;
+}

@@ -11,6 +11,7 @@ Page({
   data: {
     id: '',
     commentList: [], // 评论列表
+    commentExsit: true // 默认有评论
   },
 
   /**
@@ -26,11 +27,15 @@ Page({
         wx.hideLoading()
         if (!result.data.code) {
           this.setData({
-            commentList: result.data.data
+            commentList: result.data.data,
+            commentExsit: !!result.data.data.length
           })
         } else {
           wx.showToast({
             title: '加载失败',
+          })
+          this.setData({
+            commentExsit: false
           })
         }
       },
@@ -38,6 +43,9 @@ Page({
         wx.hideLoading()
         wx.showToast({
           title: '加载失败',
+        })
+        this.setData({
+          commentExsit: false
         })
       },
       complete() {

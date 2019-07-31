@@ -1,6 +1,6 @@
 <!--pages/comments/list/list.wxml-->
 <!-- 列表结构 -->
-<scroll-view class="comments-list-main" scroll-y scroll-with-animation enable-back-to-top>
+<scroll-view wx:if="{{commentExsit}}" class="comments-list-main" scroll-y scroll-with-animation enable-back-to-top>
   <navigator wx:for="{{commentList}}" class="comments-item bd-b" url="/pages/comments/detail/detail?id={{item.id}}">
     <view class='top'>
         <view class='pic' style="background-image:url({{item.avatar}})"></view>
@@ -18,6 +18,10 @@
     </block>
   </navigator>
 </scroll-view>
+<!-- 无数据时的处理 -->
+<view class="no-data" wx:if="{{!commentExsit}}">
+  暂无任何影评
+</view>
 <!-- 底部按钮 -->
 <view class="comments-bottom-bar">
   <link inner-text="回到首页" to="../../home/home" is-home="true" class-name="'flex'"></link>

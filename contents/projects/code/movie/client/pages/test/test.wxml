@@ -4,4 +4,10 @@ s
   <view> ------------------------ </view>
 
   <view catchtouchstart="say" catchtouchend="sayOver"> 点击录音 </view>
+
+  <!-- audio.wxml -->
+  <button type="primary" bindtap="play">Play</button>
+  <button type="primary" bindtap="pause">Pause</button>
+  <button type="primary" bindtap="audio14">Set the current play time to 14s</button>
+  <button type="primary" bindtap="audioStart">Return to the beginning</button>
 </view>

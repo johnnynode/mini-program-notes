@@ -37,14 +37,19 @@ Page({
     var Timestart = this.data.Timestart;
     var Timeout = e.timeStamp;
     var TimeIng = Timeout - Timestart;
+    this.setData({
+      TimeIng
+    })
     recorderManager.stop();
   },
 
   // 播放音频
   play() {
     // innerAudioContext.autoplay = false
-    innerAudioContext.play(); // 播放
     // innerAudioContext.src = this.tempFilePath, todo
+    console.log('go!')
+    innerAudioContext.src = 'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'
+    innerAudioContext.play(); // 播放
   },
 
   pause() {
@@ -52,24 +57,23 @@ Page({
   },
   
   // 文件上传
-  uploadFile(tempFilePath) {
+  uploadFile(tempFilePath, time, size) {
     wx.uploadFile({
-      url:'这里填写路径地址',
+      url: config.service.uploadUrl,
       filePath: tempFilePath,
-      name: temp,
+      name: 'file',
       header: {
-        contentType: "multipart/form-data",//按需求增加
+        contentType: "multipart/form-data", // 按需求增加
       },
       formData: {
-        file: tempFilePath,
-        //看后台需要什么传什么过去，这里我传两个，一个是临时路径，一个是录音时长
-        time: TimeIng,
+        file: tempFilePath
       },
       success: function (res) {
-        //这里你可以根据后台传过来的res进行任性的操作，是的。。任性！！！
         console.log('res =>>> ')
         console.log(res)
         console.log(' ======== ')
+        // 成功获取结果后, 将结果拼接起来 path;time;size 组成新字符串传递
+        
       }
     })
   },
@@ -85,18 +89,22 @@ Page({
       console.log(res);
       console.log('....')
       var tempFilePath = res.tempFilePath;// 文件临时路径
+      let size = res.size;
+      let timing = this.data.TimeIng
       // var temp = tempFilePath.replace('.mp3', '')
       console.log('劳资获取到文件了，开始上传');
-      // this.uploadFile();
+      this.uploadFile(tempFilePath, TimeIng, size);
     })
   },
 
   audioListener() {
-    /*
     innerAudioContext.onPlay(() => {
       console.log('开始播放...!')
     })
-    */
+
+    innerAudioContext.onPause(() => {
+      console.log('开始暂停...!')
+    });
     
     // 测试播放
     innerAudioContext.onError((res) => {
