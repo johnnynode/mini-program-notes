@@ -8,7 +8,7 @@ module.exports = {
 
   async recommend(ctx) {
     try {
-      ctx.state.data = await DB.query("SELECT * FROM movies_list as ml inner join movies_comment as mc where ml.id = mc.movie_id;")
+      ctx.state.data = await DB.query("SELECT * FROM movies_list as ml")
     } catch (error) {
       console.log(error)
     }
