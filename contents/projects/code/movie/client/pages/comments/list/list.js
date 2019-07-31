@@ -31,7 +31,7 @@ Page({
           list.map((item)=>{
             if(item.type === 1 && item.content) {
               // path;time;size
-              let contentArray = item.content;
+              let contentArray = item.content.split(';');
               item.contentUrl = contentArray[0];
               item.contentTime = contentArray[1];
               item.contentSize = contentArray[2];

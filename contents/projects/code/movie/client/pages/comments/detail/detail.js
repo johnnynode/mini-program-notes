@@ -108,10 +108,19 @@ Page({
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
+          let commentDetail = result.data.data;
+          // 对音频文件的处理
+          let content = commentDetail.content
+          if(content && commentDetail.type === 1) {
+            let contentArray = content.split(';');
+            // path;time;size
+            commentDetail.contentUrl = contentArray[0];
+            commentDetail.contentTime = contentArray[1];
+            commentDetail.contentSize = contentArray[1];
+          }
           this.setData({
-            commentDetail: result.data.data
+            commentDetail
           })
-          console.log(this.data.commentDetail)
         } else {
           wx.showToast({
             title: '加载失败',
