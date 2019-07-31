@@ -2,13 +2,13 @@ const DB = require('../utils/db.js')
 
 module.exports = {
   /**
-   * 拉取商品列表
+   * 拉取电影列表
    * 
    */
 
   async recommend(ctx) {
     try {
-      ctx.state.data = await DB.query("SELECT * FROM movies_list;")
+      ctx.state.data = await DB.query("SELECT * FROM movies_list as ml inner join movies_comment as mc where ml.id = mc.movie_id;")
     } catch (error) {
       console.log(error)
     }
