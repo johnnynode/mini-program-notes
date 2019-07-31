@@ -24,13 +24,26 @@ var config = {
     // 拉取用户信息
     user: `${host}/weapp/user`,
 
-    
+    // 首页推荐
+    movieRecommend: `${host}/weapp/movie/recommend`,
 
-    // 添加评论
-    addComment: `${host}/weapp/comment`,
+    // 热门电影列表
+    movieHot: `${host}/weapp/movie/hot`,
 
-    // 获取评论列表
-    commentList: `${host}/weapp/comment`,
+    // 电影详情
+    movieDetail: `${host}/weapp/movie`,
+
+    // 添加评论 或 获取电影影评列表
+    comment: `${host}/weapp/comment`,
+
+    // 获取影评详情
+    commentDetail: `${host}/weapp/comment/detail`,
+
+    // 获取收藏状态 或 切换收藏状态
+    collection: `${host}/weapp/collection`,
+
+    // 获取用户收藏列表
+    userCollection: `${host}/weapp/user/collection`
   }
 };
 

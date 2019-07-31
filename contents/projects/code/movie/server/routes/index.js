@@ -41,7 +41,7 @@ router.get('/movie/:id', controllers.movie.detail)
 router.post('/comment', validationMiddleware, controllers.comment.add)
 // 获取电影影评列表
 router.get('/comment/:id', validationMiddleware, controllers.comment.list)
-// 获取影评列表
+// 获取影评详情
 router.get('/comment/detail/:id', validationMiddleware, controllers.comment.detail)
 // 获取收藏状态
 router.get('/collection', controllers.collection.getState)
