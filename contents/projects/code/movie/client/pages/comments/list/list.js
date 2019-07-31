@@ -26,9 +26,20 @@ Page({
       success: result => {
         wx.hideLoading()
         if (!result.data.code) {
+          let list = result.data.data;
+          // 对数据进行处理 音频解析
+          list.map((item)=>{
+            if(item.type === 1 && item.content) {
+              // path;time;size
+              let contentArray = item.content;
+              item.contentUrl = contentArray[0];
+              item.contentTime = contentArray[1];
+              item.contentSize = contentArray[2];
+            }
+          })
           this.setData({
-            commentList: result.data.data,
-            commentExsit: !!result.data.data.length
+            commentList: list,
+            commentExsit: !!list.length
           })
         } else {
           wx.showToast({
