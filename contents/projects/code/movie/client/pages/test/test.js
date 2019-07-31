@@ -46,13 +46,7 @@ Page({
 
   // 播放或暂停音频
   play() {
-    console.log('go!')
-    
     innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
-  },
-
-  pause() {
-    innerAudioContext.pause();
   },
   
   // 文件上传

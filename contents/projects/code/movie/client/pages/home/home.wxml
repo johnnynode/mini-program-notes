@@ -15,7 +15,6 @@
                 <view class="recommend">{{123}} 给你推荐了一部电影</view>
               </view>
             </navigator>
-
           </swiper-item>
         </block>
       </swiper>
