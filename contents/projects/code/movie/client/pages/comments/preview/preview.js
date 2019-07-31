@@ -36,6 +36,15 @@ Page({
     this.setData({previewObj})
   },
 
+  /**
+   * 返回前一页
+   */
+  back() {
+    wx.navigateBack({
+        delta: 1
+    })
+  },
+
   submit() {
     if(!this.data.userInfo) {
       console.log('未登录!')

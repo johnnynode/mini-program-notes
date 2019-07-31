@@ -30,10 +30,10 @@
     <!-- 底部按钮 -->
     <view class='bottom-bar-wrap'>
       <view class='flex-box bottom-bar h-middle'>
-        <navigator class='flex' url="/pages/comments/list/list?id={{1}}">
+        <view bindtap="back" class='flex' open-type="navigate" url="/pages/comments/list/list?id={{1}}">
           <view class='icon' style="background-image:{{'url(/images/back.png)'}}"></view>
           <view>重新编辑</view>
-        </navigator>
+        </view>
         <view class='flex' bindtap="submit">
           <view class='icon' style="background-image:{{'url(/images/publish.png)'}}"></view>
           <view>发布影评</view>
