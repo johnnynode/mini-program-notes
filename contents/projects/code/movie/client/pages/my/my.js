@@ -20,7 +20,7 @@ Page({
       title: '加载中',
     })
     qcloud.request({
-      url: config.service.userCollection + '?user=' + this.data.userInfo.openId,
+      url: config.service.userCollection,
       success: result => {
         let data = result.data
         wx.hideLoading()
@@ -55,8 +55,6 @@ Page({
           locationAuthType: app.data.locationAuthType
         })
         // 获取收藏列表
-        console.log('go!')
-        console.log(this.data.userInfo)
         this.getCollectionList()
       },
       error: () => {
@@ -78,7 +76,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
   },
 
   /**
