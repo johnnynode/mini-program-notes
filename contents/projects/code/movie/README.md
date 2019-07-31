@@ -1,5 +1,35 @@
 # 电影 小程序 demo 运行说明
 
+## 效果预览
+
+- 首页
+
+<img width="350" src="./screenshot/1.1.jpg"/>
+
+- 登录页
+
+<img width="350" src="./screenshot/2.1.jpg"/>
+<img width="350" src="./screenshot/2.2.jpg"/>
+<br>
+<img width="350" src="./screenshot/2.3.jpg"/>
+
+- 电影相关页
+<img width="350" src="./screenshot/3.1.jpg"/>
+<img width="350" src="./screenshot/3.2.jpg"/> <br/>
+<img width="350" src="./screenshot/3.2.jpg"/> <br/>
+
+- 影评相关页
+<img width="350" src="./screenshot/4.1.jpg"/>
+<img width="350" src="./screenshot/4.2.jpg"/> <br/>
+
+<img width="350" src="./screenshot/4.3.jpg"/>
+<img width="350" src="./screenshot/4.4.jpg"/> <br/>
+
+<img width="350" src="./screenshot/4.5.jpg"/>
+<img width="350" src="./screenshot/4.6.jpg"/> <br/>
+
+<img width="350" src="./screenshot/4.7.jpg"/>
+
 ## 运行须知
 
 因服务器敏感信息，此处仅贡献关键代码和解决方案，项目运行前请做如下修改处理
