@@ -10,10 +10,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movieHotList: [],
     isPlaying: false,
-    test: {a:1},
-    innerAudioContext : wx.createInnerAudioContext()
   },
 
   // 录音说话

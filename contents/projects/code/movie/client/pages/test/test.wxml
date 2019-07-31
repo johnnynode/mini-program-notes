@@ -18,4 +18,4 @@ s
   <view>&nbsp;</view>
 
 <!-- 封装后的 -->
-<audioBox audio="{{innerAudioContext}}" src="{{'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'}}" time="{{13}}"></audioBox>
+<audioBox src="{{'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'}}" time="{{13}}"></audioBox>
