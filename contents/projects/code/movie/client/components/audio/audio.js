@@ -1,4 +1,3 @@
-const innerAudioContext = wx.createInnerAudioContext()
 Component({
     properties: {
       src: {
@@ -13,23 +12,21 @@ Component({
         type: String,
         value: '',
       },
-      type: {
-        type: String,
-        value: '',
-      },
-      audio: {
+      innerAudioContext: {
         type: Object,
-        value: null
+        value: null,
+      },
+      disabled: {
+        type: Boolean,
+        value: false
       }
     },
     data: {
       isPlaying: false
     },
     ready() {
-        // 在组件实例进入页面节点树时执行
-        // this.properties.innerAudioContext.src = this.properties.src.value;
-        // this.audioListener();
         // 初始化值
+        let innerAudioContext = this.properties.innerAudioContext = wx.createInnerAudioContext();
         innerAudioContext.src = this.properties.src
         // 开始监听
         this.audioListener()
@@ -37,18 +34,22 @@ Component({
     methods: {
       // 这里是一个自定义方法
       play() {
-        innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
+        if(this.properties.disabled) {
+          return;
+        }
+        this.properties.innerAudioContext[this.data.isPlaying ? 'pause' : 'play'](); // 播放 或 暂停
       },
       audioListener() {
+        let innerAudioContext = this.properties.innerAudioContext;
+        // 播放状态
         innerAudioContext.onPlay(() => {
           this.setData({isPlaying: true})
         })
-    
+        // 暂停状态
         innerAudioContext.onPause(() => {
           this.setData({isPlaying: false})
         });
-        
-        // 测试播放
+        // 播放错误
         innerAudioContext.onError((res) => {
           this.setData({isPlaying: false})
           // 提示用户

@@ -19,3 +19,7 @@ s
 
 <!-- 封装后的 -->
 <audioBox src="{{'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'}}" time="{{13}}"></audioBox>
+
+  <view>&nbsp;</view>
+
+<audioBox src="{{'http://mpge.5nd.com/2019/2019-6-28/92325/1.mp3'}}" time="{{14}}" disabled="{{true}}"></audioBox>
