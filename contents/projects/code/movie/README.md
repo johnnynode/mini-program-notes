@@ -31,6 +31,12 @@
 <img width="350" src="./screenshot/4.6.jpg"/> <br/>
 
 <img width="350" src="./screenshot/4.7.jpg"/>
+<img width="350" src="./screenshot/4.8.jpg"/> <br/>
+
+<img width="350" src="./screenshot/4.9.jpg"/>
+<img width="350" src="./screenshot/4.10.jpg"/> <br/>
+
+<img width="350" src="./screenshot/4.11.jpg"/>
 
 ## 运行须知
 
