@@ -57,4 +57,22 @@ module.exports = {
       ctx.state.data = {}
     }
   },
+
+  /**
+   * 获取用户发布影评列表
+   */
+  async userPublishList(ctx) {
+    let user = ctx.state.$wxInfo.userinfo.openId
+    if (user) {
+      try { // movies_collection_user
+        let list = await DB.query('select mc.*, ml.*, mc.id as cid from movies_comment as mc inner join movies_list as ml where mc.movie_id = ml.id and user = ?', [user])
+
+        ctx.state.data = {success:true, data: list}
+      } catch(e) {
+        ctx.state.data = {success:false, message: e}
+      }
+    } else {
+      ctx.state.data = {success:false, message: '非法的用户'}
+    }
+  },
 }

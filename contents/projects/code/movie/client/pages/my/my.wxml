@@ -2,7 +2,7 @@
 
 <view class='my-page'>
   <!-- 收藏影评按钮 -->
-  <view class='toggle-btn'>收藏的影评 <view class='icon' style="background-image:{{'url(/images/down-arr.png)'}}"></view></view>
+  <view bindtap="toggle" class='toggle-btn'>{{toggleList[toggleIndex]}} <view class='icon' style="background-image:{{'url(/images/down-arr.png)'}}"></view></view>
   
   <!-- 登录按钮 -->
   <view wx:if="{{!userInfo}}">
@@ -11,7 +11,7 @@
   </view>
   <!-- 收藏影评列表 -->
   <scroll-view wx:if="{{userInfo}}" class="my-main" scroll-y scroll-with-animation enable-back-to-top>
-    <navigator wx:for="{{collectionList}}" class='movie-item-card collected-movie clearfix' url="/pages/comments/detail/detail?id={{item.cid}}">
+    <navigator wx:for="{{list}}" class='movie-item-card collected-movie clearfix' url="/pages/comments/detail/detail?id={{item.cid}}">
       <image class='pic' mode="scaleToFill" src="{{item.image}}"></image>
       <view class="left right-side">
         <view class='title ellipsis'>{{item.title}}</view>

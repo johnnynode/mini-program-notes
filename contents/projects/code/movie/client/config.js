@@ -43,7 +43,10 @@ var config = {
     collection: `${host}/weapp/collection/`,
 
     // 获取用户收藏列表
-    userCollection: `${host}/weapp/user/collection/`
+    userCollection: `${host}/weapp/user/collection/`,
+
+    // 获取用户发布列表
+    userPublish: `${host}/weapp/user/publish/`
   }
 };
 

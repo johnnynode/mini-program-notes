@@ -13,8 +13,6 @@ module.exports = {
     if (!isNaN(id)) {
       try {
         let res = await DB.query('select * from movies_collection_user as mcu where mcu.cid = ? and mcu.user = ?', [id, user])
-        console.log('res')
-        console.log(res);
         // 设计返回值
         ctx.state.data = {'success:': true, 'data': !!res.length}
       } catch(e) {

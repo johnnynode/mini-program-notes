@@ -11,23 +11,48 @@ Page({
   data: {
     userInfo: null,
     locationAuthType: app.data.locationAuthType,
-    collectionList: []
+    list: [],
+    toggleList: ["收藏的影评", "发布的影评"],
+    toggleIndex: 0
   },
 
-  // 获取收藏列表
-  getCollectionList(callback) {
+  // 切换选择
+  toggle() {
+    wx.showActionSheet({
+      itemList: this.data.toggleList,
+      itemColor: '#007aff',
+      success: (res) => {
+        if(this.data.toggleIndex === res.tapIndex) {
+          return;
+        }
+        // 存在不同则设置
+        this.setData({
+          toggleIndex: res.tapIndex
+        })
+        // 开始请求数据
+        this.getList()
+      }
+    })
+  },
+
+  // 获取收藏列表 或 获取发布列表
+  getList(callback) {
     wx.showLoading({
       title: '加载中',
     })
+    // 重置数据
+    this.setData({
+      list:[]
+    })
     qcloud.request({
-      url: config.service.userCollection,
+      url: config.service[this.data.toggleIndex ? 'userPublish' : 'userCollection'],
       success: result => {
         let data = result.data
         wx.hideLoading()
         if (!data.code) {
-          let collectionList = data.data.data
+          let list = data.data.data
           // 循环处理数据
-          collectionList.map((item)=>{
+          list.map((item)=>{
             if(item.content && item.type === 1) {
               let contentArray = item.content.split(';');
               item.contentUrl = contentArray[0];
@@ -35,7 +60,7 @@ Page({
             }
           })
           this.setData({
-            collectionList
+            list
           })
         } else {
           wx.showToast({
@@ -64,7 +89,7 @@ Page({
           locationAuthType: app.data.locationAuthType
         })
         // 获取收藏列表
-        this.getCollectionList()
+        this.getList()
       },
       error: () => {
         this.setData({
@@ -109,7 +134,7 @@ Page({
             userInfo
           })
           // 获取收藏列表
-          this.getCollectionList()
+          this.getList()
         }
       })
   },
@@ -132,7 +157,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.getCollectionList(()=>{
+    this.getList(()=>{
       wx.stopPullDownRefresh()
     })
   },

@@ -49,5 +49,7 @@ router.get('/collection', controllers.collection.getState)
 router.post('/collection', validationMiddleware, controllers.collection.update)
 // 获取用户收藏列表
 router.get('/user/collection', validationMiddleware, controllers.collection.list)
+// 获取用户发布列表
+router.get('/user/publish', validationMiddleware, controllers.comment.userPublishList)
 
 module.exports = router
