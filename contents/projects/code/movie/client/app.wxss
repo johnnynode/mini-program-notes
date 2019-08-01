@@ -417,6 +417,8 @@ page {
     left: 30rpx;
     text-align:center;
     line-height:50rpx;
+    background: no-repeat center;
+    background-size: 100% auto;
 }
 
 .movie-common .box-main .comment-zone .cont {

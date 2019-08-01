@@ -7,8 +7,3 @@
 .comments-detail-page .bottom-bar-wrap .icon.cur {
   background-position: top;
 }
-
-.comment-zone .deco {
-  background: no-repeat center;
-  background-size: 100% auto;
-}

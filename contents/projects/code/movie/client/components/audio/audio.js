@@ -52,6 +52,8 @@ Component({
         // 播放错误
         innerAudioContext.onError((res) => {
           this.setData({isPlaying: false})
+          console.log("播放错误：" + res.errCode + "-" + res.errMsg);
+          return;
           // 提示用户
           wx.showToast({
             icon: "none",

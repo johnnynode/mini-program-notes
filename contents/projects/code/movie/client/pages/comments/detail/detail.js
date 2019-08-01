@@ -75,9 +75,6 @@ Page({
           this.setData({
             isCollection: data.data.data
           })
-          console.log('xxxx')
-          console.log(this.data.isCollection)
-          console.log('........')
         } else {
           wx.showToast({
             icon: 'none',

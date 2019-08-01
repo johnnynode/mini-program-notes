@@ -19,12 +19,14 @@
         </view>
         <!-- 影评内容 -->
         <view class="comment-zone">
-          <view class="deco">//</view>
+          <view class="deco" style="background-image:url(/images/quote.png)"></view>
           <!-- 文字版本 -->
           <text class="cont" wx:if="{{previewObj.num === 0}}">{{previewObj.text}}</text>
           <!-- 语音版本 -->
-          <view class="cont" wx:if="{{previewObj.num === 1}}">{{previewObj.voice}}</view>
-        </view>   
+          <view class="cont" wx:if="{{previewObj.num === 1}}">
+            <audioBox src="{{previewObj.voiceUrl}}" time="{{previewObj.voiceTime}}"></audioBox>
+          </view>
+        </view>
       </view>
     </scroll-view>
     <!-- 底部按钮 -->

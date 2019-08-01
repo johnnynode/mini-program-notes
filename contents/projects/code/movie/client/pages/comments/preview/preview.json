@@ -1,3 +1,6 @@
 {
-  "navigationBarTitleText": "影评预览"
+  "navigationBarTitleText": "影评预览",
+  "usingComponents": {
+    "audioBox": "/components/audio/audio"
+  }
 }

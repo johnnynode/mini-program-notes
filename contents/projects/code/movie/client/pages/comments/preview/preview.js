@@ -1,7 +1,6 @@
-// pages/comment/comment.js
+
 const qcloud = require('../../../vendor/wafer2-client-sdk/index')
 const config = require('../../../config')
-const _ = require('../../../utils/util')
 const windowWidth = wx.getSystemInfoSync().windowWidth
 const app = getApp()
 
@@ -25,15 +24,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let voice = options.voice
+    let voiceArray = voice.split(';')
     let previewObj = {
       num: +options.num,
       id: +options.id,
       title: options.title,
       image: options.image,
       text: options.text,
-      voice: options.voice,
+      voice,
+      voiceUrl: voiceArray[0],
+      voiceTime: (voiceArray[1] / 1000).toFixed(2),
     }
     this.setData({previewObj})
+    console.log(this.data.previewObj.voiceUrl)
   },
 
   /**
