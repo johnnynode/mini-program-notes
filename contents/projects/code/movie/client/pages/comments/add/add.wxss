@@ -71,3 +71,10 @@
   padding-left: 10rpx;
   line-height: 80rpx;
 }
+
+.tempShortAudio {
+  text-align: center;
+  padding-top: 40rpx;
+  font-size: 28rpx;
+  color: #b9c5d0;
+}

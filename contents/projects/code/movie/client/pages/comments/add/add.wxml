@@ -18,9 +18,13 @@
                 <textarea  placeholder="请输入您的影评内容..." auto-focus="{{true}}" focus="{{true}}" bindinput="textInput" value="{{commentObj.text}}" />
             </view>
             <view class="voice-zone" wx:if="{{editObj.num === 1}}">
-                <view class="voice-btn">
+                <view class="voice-btn" catchtouchstart="say" catchtouchend="sayOver">
                     <view style="background-image: url(/images/voice.png)" class="voice-icon"></view>
-                    <view class="voice-text">录音</view>
+                    <view class="voice-text">{{ isRecording ? '录制中...' : '录音' }}</view>
+                </view>
+                <!-- 已录制音频展示 -->
+                <view class="tempShortAudio" wx:if="{{tempShortAudio}}">
+                  音频已录制: {{tempShortAudio}}
                 </view>
             </view>
            </block>    
