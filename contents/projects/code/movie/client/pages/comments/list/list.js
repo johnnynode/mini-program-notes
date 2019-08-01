@@ -33,7 +33,7 @@ Page({
               // path;time;size
               let contentArray = item.content.split(';');
               item.contentUrl = contentArray[0];
-              item.contentTime = contentArray[1];
+              item.contentTime = (contentArray[1] / 1000 ).toFixed(2);
               item.contentSize = contentArray[2];
             }
           })

@@ -13,7 +13,7 @@
       </view>
       <!-- 语音 -->
       <view class='bottom audio ellipsis' wx:if='{{item.type === 1}}'>
-        <audioBox src="{{item.contentUrl}}" time="12" disabled="{{true}}"></audioBox>
+        <audioBox src="{{item.contentUrl}}" time="{{item.contentTime}}" disabled="{{true}}"></audioBox>
       </view>
     </block>
   </navigator>
