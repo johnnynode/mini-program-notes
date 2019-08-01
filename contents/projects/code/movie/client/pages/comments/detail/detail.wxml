@@ -27,7 +27,7 @@
             <text class="cont" wx:if="{{commentDetail.type === 0}}">{{commentDetail.content}}</text>
             <!-- 语音版本 -->
             <view class="cont" wx:if="{{commentDetail.type === 1}}">
-               <audioBox src="{{item.contentUrl}}" time="{{item.contentTime}}"></audioBox>
+               <audioBox src="{{commentDetail.contentUrl}}" time="{{commentDetail.contentTime}}"></audioBox>
             </view>
           </view>   
         </view>

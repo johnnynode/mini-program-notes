@@ -110,14 +110,17 @@ Page({
           let content = commentDetail.content
           if(content && commentDetail.type === 1) {
             let contentArray = content.split(';');
+            console.log('contentArray')
+            console.log(contentArray)
             // path;time;size
             commentDetail.contentUrl = contentArray[0];
-            commentDetail.contentTime = contentArray[1];
-            commentDetail.contentSize = contentArray[1];
+            commentDetail.contentTime = (contentArray[1] / 1000).toFixed(2);
+            commentDetail.contentSize = contentArray[2];
           }
           this.setData({
             commentDetail
           })
+          console.log(this.data.commentDetail)
         } else {
           wx.showToast({
             title: '加载失败',
