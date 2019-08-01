@@ -12,6 +12,7 @@
 <img width="350" src="./screenshot/2.2.jpg"/>
 <br>
 <img width="350" src="./screenshot/2.3.jpg"/>
+<img width="350" src="./screenshot/2.4.jpg"/>
 
 - 电影相关页
 <br>
