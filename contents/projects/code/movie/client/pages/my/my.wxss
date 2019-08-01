@@ -65,7 +65,6 @@
 .collected-movie .right-side .voice {
     width: 300rpx;
     height: 60rpx;
-    background: pink;
     margin: 5rpx 0;
 }
 

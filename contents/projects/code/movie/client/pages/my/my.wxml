@@ -9,23 +9,22 @@
     <button wx:if="{{locationAuthType==0}}" class="wx-login-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
     <button wx:if="{{locationAuthType==1}}" class="wx-login-btn" open-type='openSetting' bindopensetting="onTapLogin">授权登录</button>
   </view>
-  
   <!-- 收藏影评列表 -->
   <scroll-view wx:if="{{userInfo}}" class="my-main" scroll-y scroll-with-animation enable-back-to-top>
-    <block wx:for="{{collectionList}}">
-      <navigator class='movie-item-card collected-movie clearfix' url="/pages/movie/detail/detail?id={{1}}">
-        <image class='pic' mode="scaleToFill" src="{{item.image}}"></image>
-        <view class="left right-side">
-          <view class='title ellipsis'>{{item.title}}</view>
-          <view wx-if="{{item.type === 1}}" class='voice ellipsis'>{{item.content}}</view>
-          <view wx-if="{{item.type === 0}}" class='text'>{{item.content}}</view>
-          <view class='box clearfix'>
-            <view class='head-pic left' style="background-image:url({{item.avatar}})"></view>
-            <view class='people left'>{{item.name}}</view>
-          </view>
+    <navigator wx:for="{{collectionList}}" class='movie-item-card collected-movie clearfix' url="/pages/comments/detail/detail?id={{item.cid}}">
+      <image class='pic' mode="scaleToFill" src="{{item.image}}"></image>
+      <view class="left right-side">
+        <view class='title ellipsis'>{{item.title}}</view>
+        <view hidden="{{item.type !== 0}}" class='text'>{{item.content}}</view>
+        <view hidden="{{item.type !== 1}}" class='voice ellipsis'>
+          <audioBox src="{{item.contentUrl}}" time="{{item.contentTime}}" disabled="{{true}}"></audioBox>
         </view>
-      </navigator>
-    </block>
+        <view class='box clearfix'>
+          <view class='head-pic left' style="background-image:url({{item.avatar}})"></view>
+          <view class='people left'>{{item.name}}</view>
+        </view>
+      </view>
+    </navigator>
   </scroll-view>
   <!-- 回到首页按钮 -->
   <view class='back-home-btn bd-t' bindtap="toHome">回到首页</view>

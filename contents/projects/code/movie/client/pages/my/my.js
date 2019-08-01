@@ -25,8 +25,17 @@ Page({
         let data = result.data
         wx.hideLoading()
         if (!data.code) {
+          let collectionList = data.data.data
+          // 循环处理数据
+          collectionList.map((item)=>{
+            if(item.content && item.type === 1) {
+              let contentArray = item.content.split(';');
+              item.contentUrl = contentArray[0];
+              item.contentTime = (contentArray[1] / 1000).toFixed(2);
+            }
+          })
           this.setData({
-            collectionList: data.data.data
+            collectionList
           })
         } else {
           wx.showToast({
